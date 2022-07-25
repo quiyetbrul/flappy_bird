@@ -1,12 +1,7 @@
-########################################################################
-####################### Makefile Template ##############################
-########################################################################
-
 # Compiler settings - Can be customized.
 CC = clang++
-CXXFLAGS = -std=c++20 -Wall
+CXXFLAGS = -std=c++20 -Wall -Wdelete-abstract-non-virtual-dtor
 LDFLAGS = -I include -l sfml-graphics -l sfml-window -l sfml-system
-# -L lib was removed in LDFLAGS because it is not needed.
 
 # Makefile settings - Can be customized.
 APPNAME = flappy_bird
