@@ -30,4 +30,6 @@ void StateMachine::ProcessStateChanges() {
     this->Is_Adding_ = false;
   }
 }
+
+StateRef &StateMachine::GetActiveState() { return this->States_.top(); }
 } // namespace Game

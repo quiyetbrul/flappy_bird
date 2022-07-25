@@ -1,10 +1,10 @@
 #ifndef STATE_MACHINE_H
 #define STATE_MACHINE_H
 
+#include "State.h"
+
 #include <memory>
 #include <stack>
-
-#include "State.h"
 
 namespace Game {
 typedef std::unique_ptr<State> StateRef;
