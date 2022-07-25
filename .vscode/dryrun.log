@@ -1,6 +1,0 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory `/Users/quiyetbrul/GitHub/flappy_bird'
-make: Leaving directory `/Users/quiyetbrul/GitHub/flappy_bird'
- 
-make: *** No targets specified and no makefile found.  Stop.
-
