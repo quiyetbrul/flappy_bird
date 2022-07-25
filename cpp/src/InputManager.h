@@ -14,11 +14,11 @@ public:
 
   sf::Vector2i GetMousePosition(sf::RenderWindow &window);
 
-  void Update();
+  // void Update();
 
-  bool IsKeyPressed(sf::Keyboard::Key key);
-  bool IsKeyReleased(sf::Keyboard::Key key);
-  bool IsKeyDown(sf::Keyboard::Key key);
+  // bool IsKeyPressed(sf::Keyboard::Key key);
+  // bool IsKeyReleased(sf::Keyboard::Key key);
+  // bool IsKeyDown(sf::Keyboard::Key key);
 };
 } // namespace Game
 
