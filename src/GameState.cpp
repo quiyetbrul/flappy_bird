@@ -42,7 +42,10 @@ void GameState::HandleInput() {
 void GameState::Update(float delta_time) {
   Pipe_->MovePipes(delta_time);
   Land_->MoveLand(delta_time);
+
+  // TODO: change pipe spawn frequency after certain score
   if (Clock_.getElapsedTime().asSeconds() > PIPE_SPAWN_FREQUENCY) {
+    Pipe_->RandomizePipeOffset(); // TODO: change pipe gap
     Pipe_->SpawnInvisiblePipe();
     Pipe_->SpawnTopPipe();
     Pipe_->SpawnBottomPipe();

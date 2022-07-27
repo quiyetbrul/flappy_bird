@@ -1,15 +1,19 @@
 #include "Pipe.h"
 #include "Definitions.h"
+#include "Land.h"
 
 #include <iostream>
 
 namespace Game {
-Pipe::Pipe(GameDataRef data) : Data_(data) {}
+Pipe::Pipe(GameDataRef data) : Data_(data) {
+  Land_Height_ = Data_->Assets_.GetTexture("Land").getSize().y;
+  Pipe_Spawn_Y_Offset_ = 0;
+}
 
 void Pipe::SpawnTopPipe() {
   sf::Sprite Pipe_Up_Sprite(
       this->Data_->Assets_.GetTexture("PipeDown Background"));
-  Pipe_Up_Sprite.setPosition(this->Data_->Window_.getSize().x, 0);
+  Pipe_Up_Sprite.setPosition(this->Data_->Window_.getSize().x, -Pipe_Spawn_Y_Offset_);
   Pipe_Sprites_.push_back(Pipe_Up_Sprite);
 }
 
@@ -19,7 +23,7 @@ void Pipe::SpawnBottomPipe() {
   Pipe_Bottom_Sprite.setPosition(
       this->Data_->Window_.getSize().x,
       this->Data_->Window_.getSize().y -
-          Pipe_Bottom_Sprite.getGlobalBounds().height);
+          Pipe_Bottom_Sprite.getGlobalBounds().height - Pipe_Spawn_Y_Offset_);
   Pipe_Sprites_.push_back(Pipe_Bottom_Sprite);
 }
 
@@ -32,6 +36,10 @@ void Pipe::SpawnInvisiblePipe() {
           Pipe_Invisible_Sprite.getGlobalBounds().height);
   Pipe_Invisible_Sprite.setColor(sf::Color(0, 0, 0, 0));
   Pipe_Sprites_.push_back(Pipe_Invisible_Sprite);
+}
+
+void Pipe::RandomizePipeOffset() {
+  Pipe_Spawn_Y_Offset_ = rand() % (Land_Height_ / 2) + 1;
 }
 
 void Pipe::DrawPipe() {
