@@ -7,15 +7,23 @@ on:
     branches: ["main"]
 jobs:
   build:
-    name: SonarCloud_Analysis
+    name: SonarCloud
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
-
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      
+      - name: Clean previous compilation
+        run: make clean
+
+      - name: Make new compilation
+        run: make
+
