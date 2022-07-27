@@ -1,5 +1,5 @@
 # Compiler settings - Can be customized.
-CC = g++
+CC = clang++
 CXXFLAGS = -std=c++20 -Wall -Wdelete-abstract-non-virtual-dtor
 LDFLAGS = -I include -l sfml-graphics -l sfml-window -l sfml-system
 
