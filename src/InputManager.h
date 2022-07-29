@@ -1,7 +1,7 @@
 #ifndef INPUT_MANAGER_H
 #define INPUT_MANAGER_H
 
-#include "../include/SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 
 namespace Game {
 class InputManager {
