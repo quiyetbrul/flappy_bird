@@ -1,7 +1,7 @@
 # Compiler settings - Can be customized.
 CC = clang++
 CXXFLAGS = -std=c++20 -Wall -Wdelete-abstract-non-virtual-dtor
-LDFLAGS = -I include -l sfml-graphics -l sfml-window -l sfml-system
+LDFLAGS = -I"flappy_bird/include" -l sfml-graphics -l sfml-window -l sfml-system
 
 # Makefile settings - Can be customized.
 APPNAME = flappy_bird
@@ -41,6 +41,10 @@ $(APPNAME): $(OBJ)
 # Building rule for .o files and its .c/.cpp in combination with all .h
 $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
 	$(CC) $(CXXFLAGS) -o $@ -c $<
+
+##### RUN #####
+run: $(APPNAME)
+	./$(APPNAME)
 
 ################### Cleaning rules for Unix-based OS ###################
 # Cleans complete project
