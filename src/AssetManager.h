@@ -1,7 +1,7 @@
 #ifndef ASSET_MANAGER_H
 #define ASSET_MANAGER_H
 
-#include "include/SFML/Graphics.hpp"
+#include "../include/SFML/Graphics.hpp"
 #include <map>
 
 namespace Game {
