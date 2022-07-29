@@ -26,7 +26,7 @@ Run memory leak detection tool
 leaks --atExit -- ./flappy_bird
 ```
 
-## Non-OS Sepecific Commands
+## Makefile Commands
 
 ### Clean up build files
 
