@@ -5,6 +5,7 @@
 *.slo
 *.lo
 *.obj
+*.o
 
 # Precompiled Headers
 *.gch
@@ -33,3 +34,4 @@
 # VSCode
 **/.vscode
 **/.DS_Store
+flappy_bird
