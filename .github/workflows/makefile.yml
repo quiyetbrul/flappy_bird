@@ -7,11 +7,13 @@ on:
     branches: [main]
 
 jobs:
-  build:
-    runs-on: macos-latest
+  build-and-test:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: install SFML
-        run: brew intall sfml # sudo apt install -y libsfml-dev
+      - name: install homebrew
+        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - name: install sfml
+        run: brew install sfml
       - name: build
         run: make all
