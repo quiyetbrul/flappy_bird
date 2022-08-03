@@ -26,3 +26,12 @@ jobs:
         run: sudo apt-get install libsfml-dev
       - name: build
         run: make all
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install sfml - windows
+        run: choco install sfml
+      - name: build
+        run: make all
