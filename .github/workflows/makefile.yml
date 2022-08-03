@@ -2,18 +2,16 @@ name: makefile
 
 on:
   push:
-      branches: [ main ]
+    branches: [main]
   pull_request:
-      branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-test:
-      runs-on: ubuntu-latest
-      steps:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
       - name: install SFML
         run: sudo apt install -y libsfml-dev
-      - name: configure
-        run: ./configure
       - name: build
         run: make all
