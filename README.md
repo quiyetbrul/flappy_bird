@@ -30,6 +30,8 @@ leaks --atExit -- ./flappy_bird
 
 ### Clean up build files
 
+`if homebrew was used make sure to include the -L LDFLAGS in Makefile (e.g. -L"/opt/homebrew/lib")`
+
 ```bash
 make clean
 ```
