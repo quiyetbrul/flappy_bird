@@ -8,10 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: install SFML
-        run: sudo apt install -y libsfml-dev
+        run: brew intall sfml # sudo apt install -y libsfml-dev
       - name: build
         run: make all
