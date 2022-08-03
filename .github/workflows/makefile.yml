@@ -32,6 +32,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: install sfml - windows
-        run: choco install sfml
+        run: winget install sfml
       - name: build
         run: make all
