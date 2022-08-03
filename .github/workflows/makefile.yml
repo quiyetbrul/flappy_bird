@@ -7,31 +7,24 @@ on:
     branches: [main]
 
 jobs:
-  build-project:
-    matrix:
-      os: [ubuntu-latest, macos-latest, windows-latest]
-      include:
-        - os: ubuntu-latest
-          release_suffix: ubuntu
-        - os: macos-latest
-          release_suffix: mac
-        - os: windows-latest
-          release_suffix: windows
-    runs-on: ${{ matrix.os }}
+  linux:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Install SFML - Linux
-        if: matrix.os == 'ubuntu-latest'
+      - name: install sfml - linux
         run: sudo apt install -y libsfml-dev
 
-      # - name: Install SFML - MacOS
-      #   if: matrix.os == 'macos-latest'
-      #   run: brew install sfml
+  windows:
+    runs-on: windows-latest
+    steps:
+        name: install sfml - windows
+      - run: choco install ninja
 
-      # - name: Install SFML - Windows
-      #   if: matrix.os == 'windows-latest'
-      #   run: choco install sfml
+  mac:
+    runs-on: macos-latest
+    steps:
+      - name: install sfml - mac
+        run: brew install sfml
 
-      - name: build
-        run: make all
+  build:
+    - name: build
+      run: make all
