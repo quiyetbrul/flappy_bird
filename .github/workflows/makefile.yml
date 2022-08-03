@@ -14,19 +14,19 @@ jobs:
       - name: install sfml - linux
         run: sudo apt install -y libsfml-dev
 
-  windows:
-    - uses: actions/checkout@v2
-    runs-on: windows-latest
-    steps:
-        name: install sfml - windows
-      - run: choco install ninja
+  # windows:
+  #   - uses: actions/checkout@v2
+  #   runs-on: windows-latest
+  #   steps:
+  #       name: install sfml - windows
+  #     - run: choco install sfml
 
-  mac:
-    - uses: actions/checkout@v2
-    runs-on: macos-latest
-    steps:
-      - name: install sfml - mac
-        run: brew install sfml
+  # mac:
+  #   - uses: actions/checkout@v2
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: install sfml - mac
+  #       run: brew install sfml
 
   build:
     - uses: actions/checkout@v2
