@@ -33,4 +33,9 @@
 # VSCode
 **/.vscode
 **/.DS_Store
+
+# CMake
+build/
+
+# compiled proj
 flappy_bird
