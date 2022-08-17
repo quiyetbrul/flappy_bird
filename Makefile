@@ -1,7 +1,7 @@
 # Compiler settings - Can be customized.
 CC = clang++
 CXXFLAGS = -std=c++20 -Wall -Wdelete-abstract-non-virtual-dtor
-LDFLAGS = -I"flappy_bird/include" -l sfml-graphics -l sfml-window -l sfml-system
+LDFLAGS = -Iinclude -Llib -lsfml-graphics -lsfml-window -lsfml-system
 
 # Makefile settings - Can be customized.
 APPNAME = flappy_bird
