@@ -17,10 +17,4 @@ bool InputManager::IsSpriteClicked(sf::Sprite object, sf::Mouse::Button button,
 sf::Vector2i InputManager::GetMousePosition(sf::RenderWindow &window) {
   return sf::Mouse::getPosition(window);
 }
-
-// void InputManager::Update() {}
-
-// bool InputManager::IsKeyPressed(sf::Keyboard::Key key) {}
-// bool InputManager::IsKeyReleased(sf::Keyboard::Key key) {}
-// bool InputManager::IsKeyDown(sf::Keyboard::Key key) {}
 } // namespace Game

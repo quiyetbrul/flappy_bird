@@ -5,12 +5,11 @@ Game::Game(int screen_width, int screen_height, std::string game_title) {
   this->Data_->Window_.create(sf::VideoMode(screen_width, screen_height),
                               game_title,
                               sf::Style::Close | sf::Style::Titlebar);
-  // this->Data_->Machine_.AddState(StateRef(new SplashState(this->Data_)), true);
+  // this->Data_->Machine_.AddState(StateRef(new SplashState(this->Data_)),
+  // true);
 
   this->Run();
 }
-
-Game::~Game() { this->Data_->Window_.close(); }
 
 void Game::Run() {
   float newTime, frameTime, interpolation;

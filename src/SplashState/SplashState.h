@@ -11,7 +11,6 @@ namespace Game {
 class SplashState : public State {
 public:
   SplashState(GameDataRef data);
-  ~SplashState();
 
   void Init();
   void HandleInput();

@@ -22,7 +22,6 @@ typedef std::shared_ptr<GameData> GameDataRef;
 class Game {
 public:
   Game(int screen_width, int screen_height, std::string game_title);
-  ~Game();
 
 private:
   const float DELTATIME_ = 1 / 60.0f;

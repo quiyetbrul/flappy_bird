@@ -11,7 +11,7 @@ namespace Game {
 class MenuState : public State {
 public:
   MenuState(GameDataRef data);
-  ~MenuState();
+
   void Init();
   void HandleInput();
   void Update(float delta_time);
