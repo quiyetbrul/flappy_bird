@@ -1,3 +1,3 @@
 #! /bin/sh
 
-cd build; ./flapp_bird
+cd build && ./flappy_bird
