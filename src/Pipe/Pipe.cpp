@@ -1,6 +1,4 @@
 #include "Pipe.h"
-#include "Definitions.h"
-#include "Land.h"
 
 #include <iostream>
 
@@ -13,7 +11,8 @@ Pipe::Pipe(GameDataRef data) : Data_(data) {
 void Pipe::SpawnTopPipe() {
   sf::Sprite Pipe_Up_Sprite(
       this->Data_->Assets_.GetTexture("PipeDown Background"));
-  Pipe_Up_Sprite.setPosition(this->Data_->Window_.getSize().x, -Pipe_Spawn_Y_Offset_);
+  Pipe_Up_Sprite.setPosition(this->Data_->Window_.getSize().x,
+                             -Pipe_Spawn_Y_Offset_);
   Pipe_Sprites_.push_back(Pipe_Up_Sprite);
 }
 

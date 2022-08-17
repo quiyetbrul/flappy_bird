@@ -1,7 +1,4 @@
 #include "SplashState.h"
-#include "Definitions.h"
-#include "MenuState.h"
-#include "StateMachine.h"
 
 #include <iostream>
 #include <sstream>

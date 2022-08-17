@@ -1,6 +1,4 @@
 #include "GameOverState.h"
-#include "Definitions.h"
-#include "StateMachine.h"
 
 #include <iostream>
 #include <sstream>

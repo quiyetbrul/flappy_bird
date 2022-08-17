@@ -1,8 +1,10 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#include "Game.h"
-#include "State.h"
+#include "../GameLoop/Game.h"
+#include "../StateMachine/StateMachine.h"
+#include "../Utils/Definitions.h"
+#include "../Utils/State.h"
 
 namespace Game {
 class GameOverState : public State {

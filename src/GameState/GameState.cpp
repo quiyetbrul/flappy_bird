@@ -1,6 +1,4 @@
 #include "GameState.h"
-#include "Definitions.h"
-#include "StateMachine.h"
 
 #include <iostream>
 #include <sstream>

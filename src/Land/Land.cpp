@@ -1,5 +1,4 @@
 #include "Land.h"
-#include "Definitions.h"
 
 namespace Game {
 Land::Land(GameDataRef data) : Data_(data) {
@@ -9,8 +8,8 @@ Land::Land(GameDataRef data) : Data_(data) {
   Land_Sprite.setPosition(0, this->Data_->Window_.getSize().y -
                                  Land_Sprite.getGlobalBounds().height);
   Land_Sprite2.setPosition(Land_Sprite.getGlobalBounds().width,
-                          this->Data_->Window_.getSize().y -
-                              Land_Sprite.getGlobalBounds().height);
+                           this->Data_->Window_.getSize().y -
+                               Land_Sprite.getGlobalBounds().height);
 
   Land_Sprites_.push_back(Land_Sprite);
   Land_Sprites_.push_back(Land_Sprite2);

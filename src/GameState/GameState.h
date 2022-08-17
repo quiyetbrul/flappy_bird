@@ -1,9 +1,11 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#include "Pipe.h"
-#include "Land.h"
-#include "State.h"
+#include "../Land/Land.h"
+#include "../Pipe/Pipe.h"
+#include "../StateMachine/StateMachine.h"
+#include "../Utils/Definitions.h"
+#include "../Utils/State.h"
 
 namespace Game {
 class GameState : public State {

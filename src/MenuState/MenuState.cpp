@@ -1,8 +1,4 @@
 #include "MenuState.h"
-#include "Definitions.h"
-#include "Game.h"
-#include "GameState.h"
-#include "StateMachine.h"
 
 #include <iostream>
 #include <sstream>
