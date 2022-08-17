@@ -3,7 +3,7 @@
 
 #include "../AssetManager/AssetManager.h"
 #include "../InputManager/InputManager.h"
-#include "../SplashState/SplashState.h"
+// #include "../SplashState/SplashState.h"
 #include "../StateMachine/StateMachine.h"
 
 #include <memory>
