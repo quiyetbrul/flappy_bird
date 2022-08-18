@@ -3,7 +3,6 @@
 
 #include "../AssetManager/AssetManager.h"
 #include "../InputManager/InputManager.h"
-// #include "../SplashState/SplashState.h"
 #include "../StateMachine/StateMachine.h"
 
 #include <memory>
@@ -24,7 +23,7 @@ public:
   Game(int screen_width, int screen_height, std::string game_title);
 
 private:
-  const float DELTATIME_ = 1 / 60.0f;
+  const float DELTATIME_ = 1.0f / 60.0f;
   sf::Clock Clock_;
   GameDataRef Data_ = std::make_shared<GameData>();
 

@@ -10,10 +10,10 @@ namespace Game {
 class Land {
 public:
   Land(GameDataRef data);
-  ~Land();
 
   void MoveLand(float delta_time);
   void DrawLand();
+  const std::vector<sf::Sprite> &GetSprites() const;
 
 private:
   GameDataRef Data_;

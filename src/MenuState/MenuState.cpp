@@ -10,24 +10,26 @@ void MenuState::Init() {
   std::cout << "Initializing Menu State" << std::endl;
   this->Data_->Assets_.LoadTexture("Main Menu Background",
                                    MENU_BACKGROUND_FILEPATH);
-  this->Data_->Assets_.LoadTexture("Game Title", GAME_TITLE_FILEPATH);
-  this->Data_->Assets_.LoadTexture("Play Button", PLAY_BUTTON_FILEPATH);
+  this->Data_->Assets_.LoadTexture("Game Title",
+                                   GAME_TITLE_FILEPATH);
+  this->Data_->Assets_.LoadTexture("Play Button",
+                                   PLAY_BUTTON_FILEPATH);
 
   this->Menu_Sprite_.setTexture(
       this->Data_->Assets_.GetTexture("Main Menu Background"));
-  this->Title_Sprite_.setTexture(this->Data_->Assets_.GetTexture("Game Title"));
+  this->Title_Sprite_.setTexture(
+      this->Data_->Assets_.GetTexture("Game Title"));
   this->Play_Button_Sprite_.setTexture(
       this->Data_->Assets_.GetTexture("Play Button"));
 
   this->Title_Sprite_.setPosition(
-      (SCREEN_WIDTH / 2) - (this->Title_Sprite_.getGlobalBounds().width / 2),
-      (SCREEN_HEIGHT / 2) - (this->Title_Sprite_.getGlobalBounds().height / 2) -
-          10);
+      (SCREEN_WIDTH / 2.0) - (this->Title_Sprite_.getGlobalBounds().width / 2),
+      this->Title_Sprite_.getGlobalBounds().height / 2.0);
   this->Play_Button_Sprite_.setPosition(
-      (SCREEN_WIDTH / 2) -
-          (this->Play_Button_Sprite_.getGlobalBounds().width / 2),
-      (SCREEN_HEIGHT / 2) +
-          (this->Play_Button_Sprite_.getGlobalBounds().height / 2));
+      (SCREEN_WIDTH / 2.0) -
+          (this->Play_Button_Sprite_.getGlobalBounds().width / 2.0),
+      (SCREEN_HEIGHT / 2.0) -
+          (this->Play_Button_Sprite_.getGlobalBounds().height / 2.0));
 }
 
 void MenuState::HandleInput() {

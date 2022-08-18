@@ -1,7 +1,10 @@
 #include "Game.h"
 
+// #include "../SplashState/SplashState.h"
+
 namespace Game {
 Game::Game(int screen_width, int screen_height, std::string game_title) {
+  srand(time(NULL));
   this->Data_->Window_.create(sf::VideoMode(screen_width, screen_height),
                               game_title,
                               sf::Style::Close | sf::Style::Titlebar);

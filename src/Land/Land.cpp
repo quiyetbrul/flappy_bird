@@ -36,4 +36,8 @@ void Land::MoveLand(float delta_time) {
     }
   }
 }
+
+const std::vector<sf::Sprite> &Land::GetSprites() const {
+  return Land_Sprites_;
+}
 } // namespace Game

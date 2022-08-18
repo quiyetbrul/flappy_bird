@@ -11,7 +11,6 @@ namespace Game {
 class Pipe {
 public:
   Pipe(GameDataRef data);
-  ~Pipe();
 
   void SpawnTopPipe();
   void SpawnBottomPipe();

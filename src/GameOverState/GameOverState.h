@@ -10,7 +10,7 @@ namespace Game {
 class GameOverState : public State {
 public:
   GameOverState(GameDataRef data);
-  ~GameOverState();
+
   void Init();
   void HandleInput();
   void Update(float delta_time);
