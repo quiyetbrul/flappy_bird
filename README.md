@@ -26,22 +26,22 @@ Run memory leak detection tool
 leaks --atExit -- ./flappy_bird
 ```
 
-## Makefile Commands
+## CMake Commands
 
 ### Clean up build files
 
 ```bash
-make clean
+rm -rf build
 ```
 
 ### Build
 
 ```bash
-make all
+sh make.sh
 ```
 
 ### Run
 
 ```bash
-make run
+sh run.sh
 ```
