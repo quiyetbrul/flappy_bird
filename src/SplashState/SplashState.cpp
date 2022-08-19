@@ -8,10 +8,10 @@ SplashState::SplashState(GameDataRef data) : Data_(data) {}
 
 void SplashState::Init() {
   std::cout << "Initializing Splash State" << std::endl;
-  // this->Data_->Assets_.LoadTexture("Splash State Background",
-  //                                  SPLASH_SCENE_BACKGROUND_FILEPATH);
-  // Background_Sprite_.setTexture(
-  //     this->Data_->Assets_.GetTexture("Splash State Background"));
+  this->Data_->Assets_.LoadTexture("Splash State Background",
+                                   SPLASH_SCENE_BACKGROUND_FILEPATH);
+  Background_Sprite_.setTexture(
+      this->Data_->Assets_.GetTexture("Splash State Background"));
 }
 
 void SplashState::HandleInput() {
