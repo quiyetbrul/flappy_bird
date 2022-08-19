@@ -39,3 +39,6 @@ build/
 
 # compiled proj
 flappy_bird
+
+# cache
+.cache
