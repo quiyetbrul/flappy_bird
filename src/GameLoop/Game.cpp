@@ -1,6 +1,9 @@
 #include "Game.h"
 
-// #include "../SplashState/SplashState.h"
+#include <stdlib.h>
+#include <time.h>
+
+#include "../SplashState/SplashState.h"
 
 namespace Game {
 Game::Game(int screen_width, int screen_height, std::string game_title) {
@@ -8,8 +11,8 @@ Game::Game(int screen_width, int screen_height, std::string game_title) {
   this->Data_->Window_.create(sf::VideoMode(screen_width, screen_height),
                               game_title,
                               sf::Style::Close | sf::Style::Titlebar);
-  // this->Data_->Machine_.AddState(StateRef(new SplashState(this->Data_)),
-  // true);
+  this->Data_->Machine_.AddState(StateRef(new SplashState(this->Data_)),
+  true);
 
   this->Run();
 }
