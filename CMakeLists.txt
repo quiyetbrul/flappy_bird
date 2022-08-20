@@ -24,6 +24,7 @@ find_package(SFML 2.5 COMPONENTS system window graphics audio REQUIRED)
 add_executable(${PROJECT_NAME}      
                               src/Main/main.cpp
                               src/AssetManager/AssetManager.cpp
+                              src/Bird/Bird.cpp
                               src/GameLoop/Game.cpp
                               src/GameOverState/GameOverState.cpp
                               src/GameState/GameState.cpp

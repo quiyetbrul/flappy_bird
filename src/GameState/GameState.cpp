@@ -11,10 +11,17 @@ void GameState::Init() {
   this->Data_->Assets_.LoadTexture("Game State Background",
                                    GAME_BACKGROUND_FILEPATH);
 
+  this->Data_->Assets_.LoadTexture("Bird Frame 1", BIRD_FRAME_1_FILEPATH);
+  this->Data_->Assets_.LoadTexture("Bird Frame 2", BIRD_FRAME_2_FILEPATH);
+  this->Data_->Assets_.LoadTexture("Bird Frame 3", BIRD_FRAME_3_FILEPATH);
+  this->Data_->Assets_.LoadTexture("Bird Frame 4", BIRD_FRAME_4_FILEPATH);
+
   this->Data_->Assets_.LoadTexture("PipeUp Background", PIPE_UP_FILEPATH);
   this->Data_->Assets_.LoadTexture("PipeDown Background", PIPE_DOWN_FILEPATH);
+
   this->Data_->Assets_.LoadTexture("Land", LAND_FILEPATH);
 
+  Bird_ = new Bird(this->Data_);
   Pipe_ = new Pipe(this->Data_);
   Land_ = new Land(this->Data_);
 
@@ -49,11 +56,14 @@ void GameState::Update(float delta_time) {
     Pipe_->SpawnBottomPipe();
     Clock_.restart();
   }
+
+  Bird_->Animate(delta_time);
 }
 void GameState::Draw(float delta_time) {
   this->Data_->Window_.clear(sf::Color::Black);
   this->Data_->Window_.draw(Game_Background_Sprite_);
 
+  Bird_->DrawBird();
   Pipe_->DrawPipe();
   Land_->DrawLand();
 

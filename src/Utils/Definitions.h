@@ -21,4 +21,10 @@
 #define PIPE_MOVEMENT_SPEED 200.0f
 #define PIPE_SPAWN_FREQUENCY 2.0f
 
+#define BIRD_FRAME_1_FILEPATH "../assets/sprites/bird-01.png"
+#define BIRD_FRAME_2_FILEPATH "../assets/sprites/bird-02.png"
+#define BIRD_FRAME_3_FILEPATH "../assets/sprites/bird-03.png"
+#define BIRD_FRAME_4_FILEPATH "../assets/sprites/bird-04.png"
+#define BIRD_ANIMATION_DURATION 0.4f
+
 #endif // DEFINITIONS_H

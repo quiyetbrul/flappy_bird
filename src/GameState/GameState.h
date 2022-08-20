@@ -1,6 +1,7 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
+#include "../Bird/Bird.h"
 #include "../Land/Land.h"
 #include "../Pipe/Pipe.h"
 #include "../StateMachine/StateMachine.h"
@@ -24,8 +25,8 @@ private:
 
   sf::Sprite Game_Background_Sprite_;
 
+  Bird *Bird_;
   Pipe *Pipe_;
-
   Land *Land_;
 };
 } // namespace Game
