@@ -2,6 +2,7 @@
 #define GAMESTATE_H
 
 #include "../Bird/Bird.h"
+#include "../Collission/Collission.h"
 #include "../Land/Land.h"
 #include "../Pipe/Pipe.h"
 #include "../StateMachine/StateMachine.h"
@@ -28,6 +29,9 @@ private:
   Bird *Bird_;
   Pipe *Pipe_;
   Land *Land_;
+  Collission Collission_;
+
+  int Game_State_;
 };
 } // namespace Game
 

@@ -32,4 +32,5 @@ void StateMachine::ProcessStateChanges() {
 }
 
 StateRef &StateMachine::GetActiveState() { return this->States_.top(); }
+
 } // namespace Game

@@ -57,4 +57,9 @@ void Pipe::MovePipes(float delta_time) {
     }
   }
 }
+
+const std::vector<sf::Sprite> &Pipe::GetSprites() const {
+  return Pipe_Sprites_;
+}
+
 } // namespace Game

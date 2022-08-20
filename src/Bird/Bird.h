@@ -13,15 +13,23 @@ public:
 
   void DrawBird();
   void Animate(float delta_time);
+  void Update(float delta_time);
+  void Tap();
+
+  const sf::Sprite &GetSprite() const;
 
 private:
   GameDataRef Data_;
   sf::Sprite Bird_Sprite_;
+  int Bird_State_;
+  float Rotation_;
 
   std::vector<sf::Texture> Animation_Frames_;
   unsigned int Animation_Iterator_;
   unsigned int Animation_Frames_Size_;
-  sf::Clock Clock_;
+  sf::Clock Animation_Clock_;
+
+  sf::Clock Movement_Clock_;
 };
 } // namespace Game
 

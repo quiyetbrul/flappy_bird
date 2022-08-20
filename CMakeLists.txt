@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
 project (flappy_bird)
 
 # Set C++ standard
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
@@ -25,6 +25,7 @@ add_executable(${PROJECT_NAME}
                               src/Main/main.cpp
                               src/AssetManager/AssetManager.cpp
                               src/Bird/Bird.cpp
+                              src/Collission/Collission.cpp
                               src/GameLoop/Game.cpp
                               src/GameOverState/GameOverState.cpp
                               src/GameState/GameState.cpp

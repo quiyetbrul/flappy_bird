@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <tuple>
 
 namespace Game {
 GameState::GameState(GameDataRef data) : Data_(data) {}
@@ -27,6 +28,8 @@ void GameState::Init() {
 
   Game_Background_Sprite_.setTexture(
       this->Data_->Assets_.GetTexture("Game State Background"));
+
+  Game_State_ = GameStates::eReady;
 }
 
 void GameState::HandleInput() {
@@ -39,26 +42,55 @@ void GameState::HandleInput() {
     }
     if (this->Data_->Input_.IsSpriteClicked(this->Game_Background_Sprite_,
                                             sf::Mouse::Left,
-                                            this->Data_->Window_)) {
+                                            this->Data_->Window_) ||
+        sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+      if (GameStates::eGameOver != Game_State_) {
+        Game_State_ = GameStates::ePlaying;
+        // TODO: create clock setter/getter to animate bird better
+        Bird_->Tap();
+      }
     }
   }
 }
 
 void GameState::Update(float delta_time) {
-  Pipe_->MovePipes(delta_time);
-  Land_->MoveLand(delta_time);
-
-  // TODO: change pipe spawn frequency after certain score
-  if (Clock_.getElapsedTime().asSeconds() > PIPE_SPAWN_FREQUENCY) {
-    Pipe_->RandomizePipeOffset(); // TODO: change pipe gap
-    Pipe_->SpawnInvisiblePipe();
-    Pipe_->SpawnTopPipe();
-    Pipe_->SpawnBottomPipe();
-    Clock_.restart();
+  if (GameStates::eGameOver != Game_State_) {
+    Bird_->Animate(delta_time);
+    Land_->MoveLand(delta_time);
   }
 
-  Bird_->Animate(delta_time);
+  if (GameStates::ePlaying == Game_State_) {
+    Pipe_->MovePipes(delta_time);
+
+    // TODO: change pipe spawn frequency after certain score
+    if (Clock_.getElapsedTime().asSeconds() > PIPE_SPAWN_FREQUENCY) {
+      Pipe_->RandomizePipeOffset(); // TODO: change pipe gap
+      Pipe_->SpawnInvisiblePipe();
+      Pipe_->SpawnTopPipe();
+      Pipe_->SpawnBottomPipe();
+      Clock_.restart();
+    }
+
+    Bird_->Update(delta_time);
+
+    std::vector<sf::Sprite> land_sprites = Land_->GetSprites();
+    for (const auto &land_sprite : land_sprites) {
+      if (Collission_.CheckSpriteCollision(Bird_->GetSprite(), land_sprite)) {
+        Game_State_ = GameStates::eGameOver;
+        Clock_.restart();
+      }
+    }
+
+    std::vector<sf::Sprite> pipe_sprites = Pipe_->GetSprites();
+    for (const auto &pipe_sprite : pipe_sprites) {
+      if (Collission_.CheckSpriteCollision(Bird_->GetSprite(), pipe_sprite)) {
+        Game_State_ = GameStates::eGameOver;
+        Clock_.restart();
+      }
+    }
+  }
 }
+
 void GameState::Draw(float delta_time) {
   this->Data_->Window_.clear(sf::Color::Black);
   this->Data_->Window_.draw(Game_Background_Sprite_);

@@ -5,7 +5,8 @@
 #define SCREEN_HEIGHT 1024
 
 #define SPLASH_STATE_SHOW_TIME 0.0
-#define SPLASH_SCENE_BACKGROUND_FILEPATH "../assets/sprites/SplashBackground.png"
+#define SPLASH_SCENE_BACKGROUND_FILEPATH                                       \
+  "../assets/sprites/SplashBackground.png"
 
 #define MENU_BACKGROUND_FILEPATH "../assets/sprites/sky.png"
 #define GAME_BACKGROUND_FILEPATH "../assets/sprites/sky.png"
@@ -26,5 +27,14 @@
 #define BIRD_FRAME_3_FILEPATH "../assets/sprites/bird-03.png"
 #define BIRD_FRAME_4_FILEPATH "../assets/sprites/bird-04.png"
 #define BIRD_ANIMATION_DURATION 0.4f
+#define BIRD_ROTATION_SPEED 100.0f
+#define BIRD_STATE_STILL 1
+#define BIRD_STATE_FALLING 2
+#define BIRD_STATE_FLYING 3
+#define BIRD_FLYING_SPEED 350.0f
+#define FLYING_DURATION 0.25f
+#define GRAVITY 350.0f
+
+enum GameStates { eReady, ePlaying, eGameOver }; // enum GameStates
 
 #endif // DEFINITIONS_H

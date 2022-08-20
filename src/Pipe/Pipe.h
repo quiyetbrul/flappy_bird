@@ -21,6 +21,8 @@ public:
   void DrawPipe();
   void MovePipes(float delta_time);
 
+  const std::vector<sf::Sprite> &GetSprites() const;
+
 private:
   GameDataRef Data_;
   std::vector<sf::Sprite> Pipe_Sprites_;

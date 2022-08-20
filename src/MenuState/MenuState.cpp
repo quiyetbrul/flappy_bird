@@ -10,15 +10,12 @@ void MenuState::Init() {
   std::cout << "Initializing Menu State" << std::endl;
   this->Data_->Assets_.LoadTexture("Main Menu Background",
                                    MENU_BACKGROUND_FILEPATH);
-  this->Data_->Assets_.LoadTexture("Game Title",
-                                   GAME_TITLE_FILEPATH);
-  this->Data_->Assets_.LoadTexture("Play Button",
-                                   PLAY_BUTTON_FILEPATH);
+  this->Data_->Assets_.LoadTexture("Game Title", GAME_TITLE_FILEPATH);
+  this->Data_->Assets_.LoadTexture("Play Button", PLAY_BUTTON_FILEPATH);
 
   this->Menu_Sprite_.setTexture(
       this->Data_->Assets_.GetTexture("Main Menu Background"));
-  this->Title_Sprite_.setTexture(
-      this->Data_->Assets_.GetTexture("Game Title"));
+  this->Title_Sprite_.setTexture(this->Data_->Assets_.GetTexture("Game Title"));
   this->Play_Button_Sprite_.setTexture(
       this->Data_->Assets_.GetTexture("Play Button"));
 
@@ -43,7 +40,8 @@ void MenuState::HandleInput() {
     }
 
     if (this->Data_->Input_.IsSpriteClicked(
-            this->Play_Button_Sprite_, sf::Mouse::Left, this->Data_->Window_)) {
+            this->Play_Button_Sprite_, sf::Mouse::Left, this->Data_->Window_) ||
+        sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
       // Switch To Game Mode
       this->Data_->Machine_.AddState(StateRef(new GameState(this->Data_)),
                                      true);

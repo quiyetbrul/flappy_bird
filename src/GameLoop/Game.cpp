@@ -46,4 +46,5 @@ void Game::Run() {
     this->Data_->Machine_.GetActiveState()->Draw(interpolation);
   }
 }
+
 } // namespace Game
