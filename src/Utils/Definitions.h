@@ -19,6 +19,7 @@
 
 #define PIPE_UP_FILEPATH "../assets/sprites/PipeUp.png"
 #define PIPE_DOWN_FILEPATH "../assets/sprites/PipeDown.png"
+#define PIPE_SCORING_FILEPATH "../assets/sprites/InvisibleScoringPipe.png"
 #define PIPE_MOVEMENT_SPEED 200.0f
 #define PIPE_SPAWN_FREQUENCY 2.0f
 
@@ -35,6 +36,17 @@
 #define FLYING_DURATION 0.25f
 #define GRAVITY 350.0f
 
+#define FLASH_SPEED 1500.0f
+
+#define FLAPPY_FONT_FILEPATH "../assets/fonts/FlappyFont.ttf"
+
+#define GAME_OVER_TITLE_FILEPATH "../assets/sprites/Game-Over-Title.png"
+#define GAME_OVER_BODY_FILEPATH "../assets/sprites/Game-Over-Body.png"
+
+#define HIGHSCORE_FILEPATH "../assets/HighScore.txt"
+
 enum GameStates { eReady, ePlaying, eGameOver }; // enum GameStates
+
+#define TIME_BEFORE_GAME_OVER_APPEARS 1.5f
 
 #endif // DEFINITIONS_H

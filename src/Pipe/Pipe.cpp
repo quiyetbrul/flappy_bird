@@ -39,7 +39,7 @@ void Pipe::RandomizePipeOffset() {
   Pipe_Spawn_Y_Offset_ = rand() % (Land_Height_ / 2) + 1;
 }
 
-void Pipe::DrawPipe() {
+void Pipe::Draw() {
   for (unsigned int i = 0; i < Pipe_Sprites_.size(); i++) {
     this->Data_->Window_.draw(Pipe_Sprites_[i]);
   }
@@ -56,10 +56,29 @@ void Pipe::MovePipes(float delta_time) {
       Pipe_Sprites_[i].move(-pipe_movement, 0);
     }
   }
+
+  for (unsigned int i = 0; i < Scoring_Sprites_.size(); i++) {
+    if (Scoring_Sprites_[i].getPosition().x <
+        0 - Scoring_Sprites_[i].getGlobalBounds().width) {
+      Scoring_Sprites_.erase(Scoring_Sprites_.begin() + i);
+    } else {
+      sf::Vector2f position = Scoring_Sprites_[i].getPosition();
+      float pipe_movement = PIPE_MOVEMENT_SPEED * delta_time;
+      Scoring_Sprites_[i].move(-pipe_movement, 0);
+    }
+  }
 }
 
 const std::vector<sf::Sprite> &Pipe::GetSprites() const {
   return Pipe_Sprites_;
 }
+
+void Pipe::SpawnScoringPipe() {
+  sf::Sprite Scoring_Pipe(this->Data_->Assets_.GetTexture("Scoring Pipe"));
+  Scoring_Pipe.setPosition(this->Data_->Window_.getSize().x, 0);
+  Scoring_Sprites_.push_back(Scoring_Pipe);
+}
+
+std::vector<sf::Sprite> &Pipe::GetScoringSprites() { return Scoring_Sprites_; }
 
 } // namespace Game

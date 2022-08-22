@@ -18,14 +18,18 @@ public:
 
   void RandomizePipeOffset();
 
-  void DrawPipe();
+  void Draw();
   void MovePipes(float delta_time);
 
   const std::vector<sf::Sprite> &GetSprites() const;
 
+  void SpawnScoringPipe();
+  std::vector<sf::Sprite> &GetScoringSprites();
+
 private:
   GameDataRef Data_;
   std::vector<sf::Sprite> Pipe_Sprites_;
+  std::vector<sf::Sprite> Scoring_Sprites_;
 
   int Land_Height_;
   int Pipe_Spawn_Y_Offset_;

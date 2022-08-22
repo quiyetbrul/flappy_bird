@@ -1,17 +1,17 @@
 #ifndef Bird_h
 #define Bird_h
 
-#include <vector>
-
 #include "../GameLoop/Game.h"
 #include "../Utils/Definitions.h"
+
+#include <vector>
 
 namespace Game {
 class Bird {
 public:
   Bird(GameDataRef data);
 
-  void DrawBird();
+  void Draw();
   void Animate(float delta_time);
   void Update(float delta_time);
   void Tap();

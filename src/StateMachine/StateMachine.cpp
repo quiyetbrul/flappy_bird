@@ -6,6 +6,7 @@ void StateMachine::AddState(StateRef new_state, bool is_replacing) {
   this->Is_Replacing_ = is_replacing;
   this->New_State_ = std::move(new_state);
 }
+
 void StateMachine::RemoveState() { this->Is_Removing_ = true; }
 
 void StateMachine::ProcessStateChanges() {

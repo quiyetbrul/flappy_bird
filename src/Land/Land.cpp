@@ -15,7 +15,7 @@ Land::Land(GameDataRef data) : Data_(data) {
   Land_Sprites_.push_back(Land_Sprite2);
 }
 
-void Land::DrawLand() {
+void Land::Draw() {
   for (unsigned short int i = 0; i < Land_Sprites_.size(); i++) {
     this->Data_->Window_.draw(Land_Sprites_[i]);
   }

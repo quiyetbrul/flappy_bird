@@ -28,7 +28,7 @@ Bird::Bird(GameDataRef data) : Data_(data) {
   Rotation_ = 0;
 }
 
-void Bird::DrawBird() { this->Data_->Window_.draw(Bird_Sprite_); }
+void Bird::Draw() { this->Data_->Window_.draw(Bird_Sprite_); }
 
 void Bird::Animate(float delta_time) {
   if (Animation_Clock_.getElapsedTime().asSeconds() >
@@ -70,7 +70,5 @@ void Bird::Tap() {
   Bird_State_ = BIRD_STATE_FLYING;
 }
 
-const sf::Sprite &Bird::GetSprite() const {
-  return Bird_Sprite_;
-}
+const sf::Sprite &Bird::GetSprite() const { return Bird_Sprite_; }
 } // namespace Game

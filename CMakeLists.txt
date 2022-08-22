@@ -25,10 +25,12 @@ add_executable(${PROJECT_NAME}
                               src/Main/main.cpp
                               src/AssetManager/AssetManager.cpp
                               src/Bird/Bird.cpp
-                              src/Collission/Collission.cpp
+                              src/Collision/Collision.cpp
+                              src/Flash/Flash.cpp
                               src/GameLoop/Game.cpp
                               src/GameOverState/GameOverState.cpp
                               src/GameState/GameState.cpp
+                              src/HUD/HUD.cpp
                               src/InputManager/InputManager.cpp
                               src/Land/Land.cpp
                               src/MenuState/MenuState.cpp

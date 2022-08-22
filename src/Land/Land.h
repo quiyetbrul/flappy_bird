@@ -12,7 +12,7 @@ public:
   Land(GameDataRef data);
 
   void MoveLand(float delta_time);
-  void DrawLand();
+  void Draw();
   const std::vector<sf::Sprite> &GetSprites() const;
 
 private:
