@@ -4,34 +4,31 @@
 
 #include <fstream>
 #include <iostream>
-#include <sstream>
 
 namespace Game {
 GameOverState::GameOverState(GameDataRef data, int score)
     : Data_(data), Score_(score) {}
 
 void GameOverState::Init() {
+  std::cout << "Initializing Game Over State" << std::endl;
 
   std::ifstream readFile;
   readFile.open(HIGHSCORE_FILEPATH);
   if (readFile.is_open()) {
-    while(!readFile.eof()) {
+    while (!readFile.eof()) {
       readFile >> HighScore_;
     }
   }
   readFile.close();
 
   std::ofstream writeFile(HIGHSCORE_FILEPATH);
-
   if (writeFile.is_open()) {
     if (Score_ > HighScore_) {
       HighScore_ = Score_;
     }
     writeFile << HighScore_;
   }
-    writeFile.close();
-  
-  std::cout << "Initializing Game Over State" << std::endl;
+  writeFile.close();
 
   this->Data_->Assets_.LoadTexture("Game Over State Background",
                                    GAMEOVER_BACKGROUND_FILEPATH);
