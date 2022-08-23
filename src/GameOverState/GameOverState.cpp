@@ -6,6 +6,12 @@
 #include <iostream>
 
 namespace Game {
+namespace {
+bool IsFileEmpty(std::ifstream &file) {
+  return file.peek() == std::ifstream::traits_type::eof();
+}
+} // namespace
+
 GameOverState::GameOverState(GameDataRef data, int score)
     : Data_(data), Score_(score) {}
 
@@ -15,6 +21,9 @@ void GameOverState::Init() {
   std::ifstream readFile;
   readFile.open(HIGHSCORE_FILEPATH);
   if (readFile.is_open()) {
+    if (IsFileEmpty(readFile)) {
+      HighScore_ = 0;
+    }
     while (!readFile.eof()) {
       readFile >> HighScore_;
     }

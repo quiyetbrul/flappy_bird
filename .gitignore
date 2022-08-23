@@ -42,3 +42,6 @@ flappy_bird
 
 # cache
 .cache
+
+# log
+HighScore.txt
