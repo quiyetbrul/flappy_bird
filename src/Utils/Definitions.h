@@ -5,8 +5,7 @@
 #define SCREEN_HEIGHT 1024
 
 #define SPLASH_STATE_SHOW_TIME 0.0
-#define SPLASH_SCENE_BACKGROUND_FILEPATH                                       \
-  "../assets/sprites/SplashBackground.png"
+#define SPLASH_SCENE_BACKGROUND_FILEPATH "../assets/sprites/SplashBackground.png"
 
 #define MENU_BACKGROUND_FILEPATH "../assets/sprites/sky.png"
 #define GAME_BACKGROUND_FILEPATH "../assets/sprites/sky.png"
