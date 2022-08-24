@@ -21,10 +21,11 @@ void GameOverState::Init() {
   std::ifstream readFile;
   readFile.open(HIGHSCORE_FILEPATH);
   if (readFile.is_open()) {
-    if (IsFileEmpty(readFile)) {
-      HighScore_ = 0;
-    }
     while (!readFile.eof()) {
+      if (IsFileEmpty(readFile)) {
+        HighScore_ = 0;
+        break;
+      }
       readFile >> HighScore_;
     }
   }
