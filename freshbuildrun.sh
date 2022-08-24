@@ -1,6 +1,7 @@
 #! /bin/sh
 
 rm -rf build
-sh make.sh
+sh configure.sh
+sh build.sh
 sh run.sh
 
