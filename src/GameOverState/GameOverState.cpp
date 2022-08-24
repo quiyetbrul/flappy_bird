@@ -103,7 +103,8 @@ void GameOverState::HandleInput() {
       this->Data_->Window_.close();
     }
     if (this->Data_->Input_.IsSpriteClicked(
-            Retry_Button_Sprite_, sf::Mouse::Left, this->Data_->Window_)) {
+            Retry_Button_Sprite_, sf::Mouse::Left, this->Data_->Window_) ||
+        sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
       this->Data_->Machine_.AddState(StateRef(new GameState(this->Data_)),
                                      true);
     }
