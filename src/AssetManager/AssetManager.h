@@ -7,14 +7,15 @@
 namespace Game {
 class AssetManager {
 public:
-  AssetManager(){};
-  ~AssetManager(){};
+  AssetManager() = default;
+  ~AssetManager() = default;
 
-  void LoadTexture(std::string texture_name, std::string file_name);
-  sf::Texture &GetTexture(std::string texture_name);
+  void LoadTexture(const std::string &texture_name,
+                   const std::string &file_name);
+  sf::Texture &GetTexture(const std::string &texture_name);
 
-  void LoadFont(std::string font_name, std::string file_name);
-  sf::Font &GetFont(std::string font_name);
+  void LoadFont(const std::string &font_name, const std::string &file_name);
+  sf::Font &GetFont(const std::string &font_name);
 
 private:
   std::map<std::string, sf::Texture> Textures_;

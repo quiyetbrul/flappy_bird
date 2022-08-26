@@ -10,7 +10,7 @@ class Flash {
 public:
   Flash(GameDataRef data);
   void Show(float delta_time);
-  void Draw();
+  void Draw() const;
 
 private:
   GameDataRef Data_;

@@ -1,39 +1,33 @@
 #include "Bird.h"
 
-#include <iostream>
-
 namespace Game {
-Bird::Bird(GameDataRef data) : Data_(data) {
+Bird::Bird(GameDataRef data)
+    : Data_(data), Animation_Iterator_(0), Bird_State_(BIRD_STATE_STILL),
+      Rotation_(0.0f) {
   Animation_Iterator_ = 0;
   Animation_Frames_.push_back(this->Data_->Assets_.GetTexture("Bird Frame 1"));
   Animation_Frames_.push_back(this->Data_->Assets_.GetTexture("Bird Frame 2"));
   Animation_Frames_.push_back(this->Data_->Assets_.GetTexture("Bird Frame 3"));
   Animation_Frames_.push_back(this->Data_->Assets_.GetTexture("Bird Frame 4"));
 
-  Animation_Frames_Size_ = Animation_Frames_.size();
-
   Bird_Sprite_.setTexture(Animation_Frames_[Animation_Iterator_]);
 
-  Bird_Sprite_.setPosition((this->Data_->Window_.getSize().x / 4.0) -
-                               (Bird_Sprite_.getGlobalBounds().width / 2.0),
-                           (this->Data_->Window_.getSize().y / 2.0) -
-                               (Bird_Sprite_.getGlobalBounds().height / 2.0));
+  Bird_Sprite_.setPosition((this->Data_->Window_.getSize().x / 4.0f) -
+                               (Bird_Sprite_.getGlobalBounds().width / 2.0f),
+                           (this->Data_->Window_.getSize().y / 2.0f) -
+                               (Bird_Sprite_.getGlobalBounds().height / 2.0f));
 
-  Bird_State_ = BIRD_STATE_STILL;
-
-  sf::Vector2f origin =
-      sf::Vector2f(Bird_Sprite_.getGlobalBounds().width / 2.0,
-                   Bird_Sprite_.getGlobalBounds().height / 2.0);
+  auto origin = sf::Vector2f(Bird_Sprite_.getGlobalBounds().width / 2.0f,
+                             Bird_Sprite_.getGlobalBounds().height / 2.0f);
   Bird_Sprite_.setOrigin(origin);
-  Rotation_ = 0;
 }
 
-void Bird::Draw() { this->Data_->Window_.draw(Bird_Sprite_); }
+void Bird::Draw() const { this->Data_->Window_.draw(Bird_Sprite_); }
 
-void Bird::Animate(float delta_time) {
+void Bird::Animate([[maybe_unused]] float delta_time) {
   if (Animation_Clock_.getElapsedTime().asSeconds() >
-      BIRD_ANIMATION_DURATION / Animation_Frames_Size_) {
-    if (Animation_Iterator_ < Animation_Frames_Size_ - 1) {
+      BIRD_ANIMATION_DURATION / (float)Animation_Frames_.size()) {
+    if (Animation_Iterator_ < Animation_Frames_.size() - 1) {
       Animation_Iterator_++;
     } else {
       Animation_Iterator_ = 0;

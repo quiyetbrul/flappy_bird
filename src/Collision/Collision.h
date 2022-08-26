@@ -7,11 +7,12 @@
 namespace Game {
 class Collision {
 public:
-  Collision();
+  explicit Collision();
 
-  bool CheckSpriteCollision(sf::Sprite sprite1, sf::Sprite sprite2);
-  bool CheckSpriteCollision(sf::Sprite sprite1, float scale1,
-                            sf::Sprite sprite2, float scale2);
+  bool CheckSpriteCollision(const sf::Sprite sprite1,
+                            const sf::Sprite sprite2) const;
+  bool CheckSpriteCollision(sf::Sprite sprite1, const float scale1,
+                            sf::Sprite sprite2, const float scale2) const;
 };
 } // namespace Game
 

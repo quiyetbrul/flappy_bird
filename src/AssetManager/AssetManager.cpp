@@ -3,8 +3,8 @@
 #include <iostream>
 
 namespace Game {
-void AssetManager::LoadTexture(std::string texture_name,
-                               std::string file_name) {
+void AssetManager::LoadTexture(const std::string& texture_name,
+                               const std::string& file_name) {
   sf::Texture texture;
   if (!texture.loadFromFile(file_name)) {
     std::cout << "Failed to load texture: " << texture_name << std::endl;
@@ -13,11 +13,11 @@ void AssetManager::LoadTexture(std::string texture_name,
   }
 }
 
-sf::Texture &AssetManager::GetTexture(std::string texture_name) {
+sf::Texture &AssetManager::GetTexture(const std::string& texture_name) {
   return this->Textures_.at(texture_name);
 }
 
-void AssetManager::LoadFont(std::string texture_name, std::string file_name) {
+void AssetManager::LoadFont(const std::string& texture_name, const std::string& file_name) {
   sf::Font font;
   if (!font.loadFromFile(file_name)) {
     std::cout << "Failed to load font: " << texture_name << std::endl;
@@ -26,7 +26,7 @@ void AssetManager::LoadFont(std::string texture_name, std::string file_name) {
   }
 }
 
-sf::Font &AssetManager::GetFont(std::string texture_name) {
+sf::Font &AssetManager::GetFont(const std::string& texture_name) {
   return this->Fonts_.at(texture_name);
 }
 

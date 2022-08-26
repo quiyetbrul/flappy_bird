@@ -9,9 +9,9 @@
 namespace Game {
 class Bird {
 public:
-  Bird(GameDataRef data);
+  explicit Bird(GameDataRef data);
 
-  void Draw();
+  void Draw() const;
   void Animate(float delta_time);
   void Update(float delta_time);
   void Tap();
@@ -26,7 +26,7 @@ private:
 
   std::vector<sf::Texture> Animation_Frames_;
   unsigned int Animation_Iterator_;
-  unsigned int Animation_Frames_Size_;
+  int Animation_Frames_Size_;
   sf::Clock Animation_Clock_;
 
   sf::Clock Movement_Clock_;
