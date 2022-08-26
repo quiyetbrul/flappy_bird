@@ -1,6 +1,8 @@
 #ifndef DEFINITIONS_H
 #define DEFINITIONS_H
 
+#define GAME_TITLE "Flappy Bird - Quiyet Brul"
+
 #define SCREEN_WIDTH 768
 #define SCREEN_HEIGHT 1024
 
