@@ -42,7 +42,8 @@ void Pipe::SpawnInvisiblePipe() {
 void Pipe::RandomizePipeOffset() {
   RandomEngine Random_Engine_;
   Pipe_Spawn_Y_Offset_ =
-      Random_Engine_.GenerateRandomNumber() % (Land_Height_ + 1 * -1);
+      Random_Engine_.GenerateRandomNumber() % (Land_Height_ + 1);
+  printf("PIPE SPAWN Y OFFSET %f\n", Pipe_Spawn_Y_Offset_);
 }
 
 void Pipe::Draw() {
