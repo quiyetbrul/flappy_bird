@@ -1,4 +1,5 @@
 #include "Bird.h"
+#include "../Utils/Clamp.h"
 
 namespace Game {
 Bird::Bird(GameDataRef data)
@@ -48,6 +49,11 @@ void Bird::Update(float delta_time) {
     }
     Bird_Sprite_.setRotation(Rotation_);
   } else if (BIRD_STATE_FLYING == Bird_State_) {
+    Bird_Sprite_.setPosition(
+        (this->Data_->Window_.getSize().x / 4.0f) -
+            (Bird_Sprite_.getGlobalBounds().width / 2.0f),
+        Clamp(Bird_Sprite_.getPosition().y, 1.0f,
+              SCREEN_HEIGHT - Bird_Sprite_.getGlobalBounds().height));
     Bird_Sprite_.move(0.0f, -BIRD_FLYING_SPEED * delta_time);
     Rotation_ -= BIRD_ROTATION_SPEED * delta_time;
     if (Rotation_ < -25.0f) {
