@@ -9,7 +9,7 @@ class HUD {
 public:
   HUD(GameDataRef data);
 
-  void Draw();
+  void Draw() const;
   void Update(int score);
 
 private:
