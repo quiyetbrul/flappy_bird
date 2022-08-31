@@ -8,6 +8,17 @@
 namespace Game {
 GameState::GameState(GameDataRef data) : Data_(data) {}
 
+void GameState::CheckCollision(const std::vector<sf::Sprite> &sprites,
+                               Bird &bird, float scale1, float scale2) {
+  for (const auto &sprite : sprites) {
+    if (Collision_.CheckSpriteCollision(bird.GetSprite(), scale1, sprite,
+                                        scale2)) {
+      Game_State_ = GameStates::eGameOver;
+      Clock_.restart();
+    }
+  }
+}
+
 void GameState::Init() {
   std::cout << "Initializing Game State" << std::endl;
   this->Data_->Assets_.LoadTexture("Game State Background",
@@ -80,24 +91,10 @@ void GameState::Update(float delta_time) {
 
     Bird_->Update(delta_time);
 
-    std::vector<sf::Sprite> land_sprites = Land_->GetSprites();
-    for (const auto &land_sprite : land_sprites) {
-      if (Collision_.CheckSpriteCollision(Bird_->GetSprite(),
-                                          /*bird_scale=*/0.625f, land_sprite,
-                                          /*land_scale=*/1.0f)) {
-        Game_State_ = GameStates::eGameOver;
-        Clock_.restart();
-      }
-    }
-    std::vector<sf::Sprite> pipe_sprites = Pipe_->GetSprites();
-    for (const auto &pipe_sprite : pipe_sprites) {
-      if (Collision_.CheckSpriteCollision(Bird_->GetSprite(),
-                                          /*bird_scale=*/0.625f, pipe_sprite,
-                                          /*pipe_scale=*/1.0f)) {
-        Game_State_ = GameStates::eGameOver;
-        Clock_.restart();
-      }
-    }
+    CheckCollision(Land_->GetSprites(), *Bird_, /*bird_scale=*/0.625f,
+                   /*land_scale=*/1.0f);
+    CheckCollision(Pipe_->GetSprites(), *Bird_, /*bird_scale=*/0.625f,
+                   /*pipe_scale=*/1.0f);
 
     std::vector<sf::Sprite> &scoring_pipes = Pipe_->GetScoringSprites();
     for (int i = 0; i < scoring_pipes.size(); i++) {
