@@ -26,7 +26,6 @@ private:
 
   std::vector<sf::Texture> Animation_Frames_;
   unsigned int Animation_Iterator_;
-  int Animation_Frames_Size_;
   sf::Clock Animation_Clock_;
 
   sf::Clock Movement_Clock_;

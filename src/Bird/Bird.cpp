@@ -11,17 +11,20 @@ Bird::Bird(GameDataRef data)
 
   Bird_Sprite_.setTexture(Animation_Frames_[Animation_Iterator_]);
 
-  Bird_Sprite_.setPosition((this->Data_->Window_.getSize().x / 4) -
-                               (Bird_Sprite_.getGlobalBounds().width / 2),
-                           (this->Data_->Window_.getSize().y / 2) -
-                               (Bird_Sprite_.getGlobalBounds().height / 2));
+  Bird_Sprite_.setPosition((this->Data_->Window_.getSize().x / 4.0f) -
+                               (Bird_Sprite_.getGlobalBounds().width / 2.0f),
+                           (this->Data_->Window_.getSize().y / 2.0f) -
+                               (Bird_Sprite_.getGlobalBounds().height / 2.0f));
 
   auto origin = sf::Vector2f(Bird_Sprite_.getGlobalBounds().width / 2.0f,
                              Bird_Sprite_.getGlobalBounds().height / 2.0f);
   Bird_Sprite_.setOrigin(origin);
 }
 
-void Bird::Draw() const { this->Data_->Window_.draw(Bird_Sprite_); }
+void Bird::Draw() const {
+  const_cast<sf::Sprite &>(Bird_Sprite_).setScale(1.0f, 1.0f);
+  this->Data_->Window_.draw(Bird_Sprite_);
+}
 
 void Bird::Animate([[maybe_unused]] float delta_time) {
   if (Animation_Clock_.getElapsedTime().asSeconds() >
