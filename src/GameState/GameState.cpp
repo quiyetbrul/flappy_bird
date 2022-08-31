@@ -3,6 +3,7 @@
 #include "../GameOverState/GameOverState.h"
 
 #include <iostream>
+#include <memory>
 
 namespace Game {
 GameState::GameState(GameDataRef data) : Data_(data) {}
@@ -48,15 +49,13 @@ void GameState::HandleInput() {
          event.Event::key.code == sf::Keyboard::Escape)) {
       this->Data_->Window_.close();
     }
-    if (this->Data_->Input_.IsSpriteClicked(this->Game_Background_Sprite_,
-                                            sf::Mouse::Left,
-                                            this->Data_->Window_) ||
-        sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-      if (GameStates::eGameOver != Game_State_) {
-        Game_State_ = GameStates::ePlaying;
-        // TODO: create clock setter/getter to animate bird better
-        Bird_->Tap();
-      }
+    if ((this->Data_->Input_.IsSpriteClicked(this->Game_Background_Sprite_,
+                                             sf::Mouse::Left,
+                                             this->Data_->Window_) ||
+         sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) &&
+        GameStates::eGameOver != Game_State_) {
+      Game_State_ = GameStates::ePlaying;
+      Bird_->Tap();
     }
   }
 }
@@ -71,7 +70,7 @@ void GameState::Update(float delta_time) {
     Pipe_->MovePipes(delta_time);
 
     if (Clock_.getElapsedTime().asSeconds() > Pipe_->GetSpawnFrequency()) {
-      Pipe_->RandomizePipeOffset(); // TODO: change pipe gap
+      Pipe_->RandomizePipeOffset();
       Pipe_->SpawnInvisiblePipe();
       Pipe_->SpawnTopPipe();
       Pipe_->SpawnBottomPipe();
@@ -101,9 +100,6 @@ void GameState::Update(float delta_time) {
     }
 
     std::vector<sf::Sprite> &scoring_pipes = Pipe_->GetScoringSprites();
-    // save a for loop
-    // TODO: use the loop to check for collision as scoring pipes
-    // bird position > pipe position + pipe width -> score++
     for (int i = 0; i < scoring_pipes.size(); i++) {
       if (Collision_.CheckSpriteCollision(Bird_->GetSprite(),
                                           /*bird_scale=*/0.625f,
