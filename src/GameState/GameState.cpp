@@ -70,7 +70,6 @@ void GameState::Update(float delta_time) {
   if (GameStates::ePlaying == Game_State_) {
     Pipe_->MovePipes(delta_time);
 
-    // TODO: change pipe spawn frequency after certain score
     if (Clock_.getElapsedTime().asSeconds() > Pipe_->GetSpawnFrequency()) {
       Pipe_->RandomizePipeOffset(); // TODO: change pipe gap
       Pipe_->SpawnInvisiblePipe();
@@ -116,7 +115,7 @@ void GameState::Update(float delta_time) {
         scoring_pipes.erase(scoring_pipes.begin() + i);
         if (Score_ % 10 == 0) {
           Pipe_->UpdateMovementSpeed(0.05f);
-          Pipe_->UpdateSpawnFrequesncy(0.02f);
+          Pipe_->UpdateSpawnFrequency(0.02f);
           Land_->UpdateMovementSpeed(0.05f);
         }
       }
