@@ -3,7 +3,7 @@
 namespace Game {
 bool InputManager::IsSpriteClicked(const sf::Sprite &object,
                                    sf::Mouse::Button button,
-                                   sf::RenderWindow &window) {
+                                   const sf::RenderWindow &window) const {
   if (sf::Mouse::isButtonPressed(button)) {
     sf::IntRect tempRect(object.getPosition().x, object.getPosition().y,
                          object.getGlobalBounds().width,

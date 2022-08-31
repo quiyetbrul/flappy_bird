@@ -10,7 +10,7 @@ public:
   ~InputManager(){};
 
   bool IsSpriteClicked(const sf::Sprite &object, sf::Mouse::Button button,
-                       sf::RenderWindow &window);
+                       const sf::RenderWindow &window) const;
 
   sf::Vector2i GetMousePosition(const sf::RenderWindow &window) const;
 };
