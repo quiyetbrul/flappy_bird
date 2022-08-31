@@ -27,7 +27,7 @@ public:
   std::vector<sf::Sprite> &GetScoringSprites();
 
   void UpdateMovementSpeed(const float update_movement_speed);
-  void UpdateSpawnFrequesncy(const float update_movement_speed);
+  void UpdateSpawnFrequency(const float update_movement_speed);
 
   float GetSpawnFrequency();
 
@@ -37,7 +37,7 @@ private:
   std::vector<sf::Sprite> Scoring_Sprites_;
 
   int Land_Height_;
-  int Pipe_Spawn_Y_Offset_;
+  float Pipe_Spawn_Y_Offset_;
   float Pipe_Movement_Speed_;
   float Pipe_Spawn_Frequency_;
 };

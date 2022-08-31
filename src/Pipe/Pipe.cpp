@@ -42,7 +42,7 @@ void Pipe::SpawnInvisiblePipe() {
 void Pipe::RandomizePipeOffset() {
   RandomEngine Random_Engine_;
   Pipe_Spawn_Y_Offset_ =
-      Random_Engine_.GenerateRandomNumber() % (Land_Height_ / 2) + 1;
+      Random_Engine_.GenerateRandomNumber() % (Land_Height_ + 1 * -1);
 }
 
 void Pipe::Draw() {
@@ -94,7 +94,7 @@ void Pipe::UpdateMovementSpeed(const float update_movement_speed) {
   printf("AFTER PIPE MOVEMENT SPEED: %f\n", Pipe_Movement_Speed_);
 }
 
-void Pipe::UpdateSpawnFrequesncy(const float update_spawn_frequency) {
+void Pipe::UpdateSpawnFrequency(const float update_spawn_frequency) {
   float max_freq = 1.0f;
   printf("BEFORE PIPE FREQ SPEED: %f\n", Pipe_Spawn_Frequency_);
   Pipe_Spawn_Frequency_ > max_freq

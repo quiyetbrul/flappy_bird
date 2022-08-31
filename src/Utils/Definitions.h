@@ -6,7 +6,7 @@
 #define SCREEN_WIDTH 768
 #define SCREEN_HEIGHT 1024
 
-#define SPLASH_STATE_SHOW_TIME 0.0
+#define SPLASH_STATE_SHOW_TIME 0.0f
 #define SPLASH_SCENE_BACKGROUND_FILEPATH "assets/sprites/SplashBackground.png"
 
 #define MENU_BACKGROUND_FILEPATH "assets/sprites/sky.png"
@@ -23,7 +23,7 @@
 #define PIPE_DOWN_FILEPATH "assets/sprites/PipeDown.png"
 #define PIPE_SCORING_FILEPATH "assets/sprites/InvisibleScoringPipe.png"
 #define PIPE_MOVEMENT_SPEED 200.0f
-#define PIPE_SPAWN_FREQUENCY 2.0f
+#define PIPE_SPAWN_FREQUENCY 3.0f
 
 #define BIRD_FRAME_1_FILEPATH "assets/sprites/bird-01.png"
 #define BIRD_FRAME_2_FILEPATH "assets/sprites/bird-02.png"
