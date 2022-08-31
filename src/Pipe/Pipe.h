@@ -29,7 +29,7 @@ public:
   void UpdateMovementSpeed(const float update_movement_speed);
   void UpdateSpawnFrequency(const float update_movement_speed);
 
-  float GetSpawnFrequency();
+  float GetSpawnFrequency() const;
 
 private:
   GameDataRef Data_;

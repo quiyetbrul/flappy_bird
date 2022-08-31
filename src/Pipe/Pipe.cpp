@@ -80,7 +80,7 @@ const std::vector<sf::Sprite> &Pipe::GetSprites() const {
 
 void Pipe::SpawnScoringPipe() {
   sf::Sprite Scoring_Pipe(this->Data_->Assets_.GetTexture("Scoring Pipe"));
-  Scoring_Pipe.setPosition(this->Data_->Window_.getSize().x, 0);
+  Scoring_Pipe.setPosition(this->Data_->Window_.getSize().x, 0.0f);
   Scoring_Sprites_.push_back(Scoring_Pipe);
 }
 
@@ -104,6 +104,6 @@ void Pipe::UpdateSpawnFrequency(const float update_spawn_frequency) {
   printf("AFTER PIPE FREQ SPEED: %f\n", Pipe_Spawn_Frequency_);
 }
 
-float Pipe::GetSpawnFrequency() { return Pipe_Spawn_Frequency_; }
+float Pipe::GetSpawnFrequency() const { return Pipe_Spawn_Frequency_; }
 
 } // namespace Game
