@@ -44,11 +44,11 @@ const std::vector<sf::Sprite> &Land::GetSprites() const {
 
 void Land::UpdateMovementSpeed(const float update_movement_speed) {
   float max_freq = 250.0f;
-  printf("BEFORE LAND: %f\n", Land_Movement_Speed_);
+  printf("BEFORE LAND MOVEMENT SPEED: %f\n", Land_Movement_Speed_);
   Land_Movement_Speed_ < max_freq
       ? Land_Movement_Speed_ += update_movement_speed
       : Land_Movement_Speed_ = max_freq;
-  printf("AFTER LAND: %f\n", Land_Movement_Speed_);
+  printf("AFTER LAND MOVEMENT SPEED: %f\n", Land_Movement_Speed_);
 }
 
 } // namespace Game
