@@ -14,6 +14,7 @@
 #define GAMEOVER_BACKGROUND_FILEPATH "assets/sprites/sky.png"
 
 #define LAND_FILEPATH "assets/sprites/land.png"
+#define LAND_MOVEMENT_SPEED 200.0f
 
 #define GAME_TITLE_FILEPATH "assets/sprites/title.png"
 #define PLAY_BUTTON_FILEPATH "assets/sprites/PlayButton.png"
