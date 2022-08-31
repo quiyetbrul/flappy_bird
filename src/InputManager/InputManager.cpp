@@ -1,7 +1,8 @@
 #include "InputManager.h"
 
 namespace Game {
-bool InputManager::IsSpriteClicked(sf::Sprite object, sf::Mouse::Button button,
+bool InputManager::IsSpriteClicked(const sf::Sprite &object,
+                                   sf::Mouse::Button button,
                                    sf::RenderWindow &window) {
   if (sf::Mouse::isButtonPressed(button)) {
     sf::IntRect tempRect(object.getPosition().x, object.getPosition().y,
@@ -14,7 +15,8 @@ bool InputManager::IsSpriteClicked(sf::Sprite object, sf::Mouse::Button button,
   return false;
 }
 
-sf::Vector2i InputManager::GetMousePosition(sf::RenderWindow &window) {
+sf::Vector2i
+InputManager::GetMousePosition(const sf::RenderWindow &window) const {
   return sf::Mouse::getPosition(window);
 }
 

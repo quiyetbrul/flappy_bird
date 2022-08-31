@@ -9,10 +9,10 @@ public:
   InputManager(){};
   ~InputManager(){};
 
-  bool IsSpriteClicked(sf::Sprite object, sf::Mouse::Button button,
+  bool IsSpriteClicked(const sf::Sprite &object, sf::Mouse::Button button,
                        sf::RenderWindow &window);
 
-  sf::Vector2i GetMousePosition(sf::RenderWindow &window);
+  sf::Vector2i GetMousePosition(const sf::RenderWindow &window) const;
 };
 } // namespace Game
 

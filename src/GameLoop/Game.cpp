@@ -12,8 +12,10 @@ Game::Game(const int screen_width, const int screen_height,
   this->Run();
 }
 
-void Game::Run() {
-  float newTime, frameTime, interpolation;
+void Game::Run() const {
+  float newTime;
+  float frameTime;
+  float interpolation;
 
   float currentTime = this->Clock_.getElapsedTime().asSeconds();
   float accumulator = 0.0f;

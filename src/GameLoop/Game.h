@@ -16,7 +16,7 @@ struct GameData {
   InputManager Input_;
 };
 
-typedef std::shared_ptr<GameData> GameDataRef;
+using GameDataRef = std::shared_ptr<GameData>;
 
 class Game {
 public:
@@ -28,7 +28,7 @@ private:
   sf::Clock Clock_;
   GameDataRef Data_ = std::make_shared<GameData>();
 
-  void Run();
+  void Run() const;
 };
 } // namespace Game
 

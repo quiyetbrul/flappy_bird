@@ -11,10 +11,10 @@ class GameOverState : public State {
 public:
   GameOverState(GameDataRef data, int score);
 
-  void Init();
-  void HandleInput();
-  void Update(float delta_time);
-  void Draw(float delta_time);
+  void Init() override;
+  void HandleInput() override;
+  void Update(float delta_time) override;
+  void Draw(float delta_time) override;
 
 private:
   GameDataRef Data_;
