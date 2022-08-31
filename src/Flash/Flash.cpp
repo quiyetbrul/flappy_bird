@@ -28,4 +28,4 @@ void Flash::Show(float delta_time) {
 
 void Flash::Draw() const { this->Data_->Window_.draw(Shape_); }
 
-} // namespace Game
+} // namespace Game 
