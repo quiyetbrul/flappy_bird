@@ -4,6 +4,8 @@
 namespace Game {
 class State {
 public:
+  State() {}
+  virtual ~State() = default;
   virtual void Init() = 0;
   virtual void HandleInput() = 0;
   virtual void Update(float delta_time) = 0;
