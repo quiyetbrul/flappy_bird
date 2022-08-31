@@ -2,7 +2,7 @@
 #define CLAMP_H
 
 namespace Game {
-inline float Clamp(int var, int min, int max) {
+inline float Clamp(float var, float min, float max) {
   if (var >= max) {
     return var = max;
   } else if (var <= min) {
