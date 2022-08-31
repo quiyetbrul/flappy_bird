@@ -20,13 +20,13 @@ void MenuState::Init() {
       this->Data_->Assets_.GetTexture("Play Button"));
 
   this->Title_Sprite_.setPosition(
-      (SCREEN_WIDTH / 2.0) - (this->Title_Sprite_.getGlobalBounds().width / 2),
-      this->Title_Sprite_.getGlobalBounds().height / 2.0);
+      (SCREEN_WIDTH / 2.0f) - (this->Title_Sprite_.getGlobalBounds().width / 2),
+      this->Title_Sprite_.getGlobalBounds().height / 2.0f);
   this->Play_Button_Sprite_.setPosition(
-      (SCREEN_WIDTH / 2.0) -
-          (this->Play_Button_Sprite_.getGlobalBounds().width / 2.0),
-      (SCREEN_HEIGHT / 2.0) -
-          (this->Play_Button_Sprite_.getGlobalBounds().height / 2.0));
+      (SCREEN_WIDTH / 2.0f) -
+          (this->Play_Button_Sprite_.getGlobalBounds().width / 2.0f),
+      (SCREEN_HEIGHT / 2.0f) -
+          (this->Play_Button_Sprite_.getGlobalBounds().height / 2.0f));
 }
 
 void MenuState::HandleInput() {
