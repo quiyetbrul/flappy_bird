@@ -6,7 +6,7 @@
 namespace Game {
 class RandomEngine {
 public:
-  RandomEngine() : m_Generator_(m_Random_Device_()), m_Distribution_() {}
+  RandomEngine() : m_Generator_(m_Random_Device_()) {}
   int GenerateRandomNumber() { return m_Distribution_(m_Generator_); }
 
 private:
