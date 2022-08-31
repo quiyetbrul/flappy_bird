@@ -7,7 +7,7 @@
 namespace Game {
 class HUD {
 public:
-  HUD(GameDataRef data);
+  explicit HUD(GameDataRef data);
 
   void Draw() const;
   void Update(int score);
