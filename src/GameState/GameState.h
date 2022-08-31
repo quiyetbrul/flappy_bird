@@ -21,8 +21,8 @@ public:
   void Update(float delta_time);
   void Draw(float delta_time);
 
-  void CheckCollision(const std::vector<sf::Sprite> &sprites, Bird &bird,
-                      float scale1, float scale2);
+  void CheckCollision(const std::vector<sf::Sprite> &sprites, const Bird &bird,
+                      const float scale1, const float scale2);
 
 private:
   GameDataRef Data_;

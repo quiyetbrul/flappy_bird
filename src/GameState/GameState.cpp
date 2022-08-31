@@ -8,17 +8,6 @@
 namespace Game {
 GameState::GameState(GameDataRef data) : Data_(data) {}
 
-void GameState::CheckCollision(const std::vector<sf::Sprite> &sprites,
-                               Bird &bird, float scale1, float scale2) {
-  for (const auto &sprite : sprites) {
-    if (Collision_.CheckSpriteCollision(bird.GetSprite(), scale1, sprite,
-                                        scale2)) {
-      Game_State_ = GameStates::eGameOver;
-      Clock_.restart();
-    }
-  }
-}
-
 void GameState::Init() {
   std::cout << "Initializing Game State" << std::endl;
   this->Data_->Assets_.LoadTexture("Game State Background",
@@ -67,6 +56,18 @@ void GameState::HandleInput() {
         GameStates::eGameOver != Game_State_) {
       Game_State_ = GameStates::ePlaying;
       Bird_->Tap();
+    }
+  }
+}
+
+void GameState::CheckCollision(const std::vector<sf::Sprite> &sprites,
+                               const Bird &bird, const float scale1,
+                               const float scale2) {
+  for (const auto &sprite : sprites) {
+    if (Collision_.CheckSpriteCollision(bird.GetSprite(), scale1, sprite,
+                                        scale2)) {
+      Game_State_ = GameStates::eGameOver;
+      Clock_.restart();
     }
   }
 }
