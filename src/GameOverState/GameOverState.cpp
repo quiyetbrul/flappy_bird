@@ -55,43 +55,43 @@ void GameOverState::Init() {
       this->Data_->Assets_.GetTexture("Play Button"));
 
   GameOver_Container_Sprite_.setPosition(
-      this->Data_->Window_.getSize().x / 2.0 -
-          GameOver_Container_Sprite_.getGlobalBounds().width / 2.0,
-      this->Data_->Window_.getSize().y / 2.0 -
-          GameOver_Container_Sprite_.getGlobalBounds().height / 2.0);
+      this->Data_->Window_.getSize().x / 2.0f -
+          GameOver_Container_Sprite_.getGlobalBounds().width / 2.0f,
+      this->Data_->Window_.getSize().y / 2.0f -
+          GameOver_Container_Sprite_.getGlobalBounds().height / 2.0f);
   GameOver_Title_Sprite_.setPosition(
-      this->Data_->Window_.getSize().x / 2.0 -
-          GameOver_Title_Sprite_.getGlobalBounds().width / 2.0,
+      this->Data_->Window_.getSize().x / 2.0f -
+          GameOver_Title_Sprite_.getGlobalBounds().width / 2.0f,
       GameOver_Container_Sprite_.getPosition().y -
-          GameOver_Title_Sprite_.getGlobalBounds().height * 1.2);
+          GameOver_Title_Sprite_.getGlobalBounds().height * 1.2f);
   Retry_Button_Sprite_.setPosition(
-      this->Data_->Window_.getSize().x / 2.0 -
-          Retry_Button_Sprite_.getGlobalBounds().width / 2.0,
+      this->Data_->Window_.getSize().x / 2.0f -
+          Retry_Button_Sprite_.getGlobalBounds().width / 2.0f,
       GameOver_Container_Sprite_.getPosition().y +
           GameOver_Container_Sprite_.getGlobalBounds().height +
-          (Retry_Button_Sprite_.getGlobalBounds().height * 0.2));
+          (Retry_Button_Sprite_.getGlobalBounds().height * 0.2f));
 
   Score_Text_.setFont(this->Data_->Assets_.GetFont("Flappy Font"));
   Score_Text_.setString(std::to_string(Score_));
   Score_Text_.setCharacterSize(56);
   Score_Text_.setFillColor(sf::Color::White);
   Score_Text_.setOrigin(
-      sf::Vector2f(Score_Text_.getGlobalBounds().width / 2.0,
-                   Score_Text_.getGlobalBounds().height / 2.0));
+      sf::Vector2f(Score_Text_.getGlobalBounds().width / 2.0f,
+                   Score_Text_.getGlobalBounds().height / 2.0f));
   Score_Text_.setPosition(
-      sf::Vector2f(this->Data_->Window_.getSize().x / 10.0 * 7.25,
-                   this->Data_->Window_.getSize().y / 2.15));
+      sf::Vector2f(this->Data_->Window_.getSize().x / 10.0f * 7.2f,
+                   this->Data_->Window_.getSize().y / 2.15f));
 
   HighScore_Text_.setFont(this->Data_->Assets_.GetFont("Flappy Font"));
   HighScore_Text_.setString(std::to_string(HighScore_));
   HighScore_Text_.setCharacterSize(56);
   HighScore_Text_.setFillColor(sf::Color::White);
   HighScore_Text_.setOrigin(
-      sf::Vector2f(HighScore_Text_.getGlobalBounds().width / 2.0,
-                   HighScore_Text_.getGlobalBounds().height / 2.0));
+      sf::Vector2f(HighScore_Text_.getGlobalBounds().width / 2.0f,
+                   HighScore_Text_.getGlobalBounds().height / 2.0f));
   HighScore_Text_.setPosition(
-      sf::Vector2f(this->Data_->Window_.getSize().x / 10.0 * 7.25,
-                   this->Data_->Window_.getSize().y / 1.78));
+      sf::Vector2f(this->Data_->Window_.getSize().x / 10.0f * 7.25f,
+                   this->Data_->Window_.getSize().y / 1.78f));
 }
 
 void GameOverState::HandleInput() {
