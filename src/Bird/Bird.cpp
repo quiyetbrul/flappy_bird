@@ -2,7 +2,7 @@
 
 namespace Game {
 Bird::Bird(GameDataRef data)
-    : Data_(data), Rotation_(0.0f), Bird_State_(BIRD_STATE_STILL),
+    : Data_(data), Bird_State_(BIRD_STATE_STILL), Rotation_(0.0f),
       Animation_Iterator_(0) {
   Animation_Frames_.push_back(this->Data_->Assets_.GetTexture("Bird Frame 1"));
   Animation_Frames_.push_back(this->Data_->Assets_.GetTexture("Bird Frame 2"));
