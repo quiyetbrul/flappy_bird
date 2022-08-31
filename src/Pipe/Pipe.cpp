@@ -1,11 +1,15 @@
 #include "Pipe.h"
 
+#include "../Utils/RandomEngine.h"
+
 #include <iostream>
 
 namespace Game {
-Pipe::Pipe(GameDataRef data) : Data_(data) {
+Pipe::Pipe(GameDataRef data)
+    : Data_(data), Pipe_Spawn_Y_Offset_(0),
+      Pipe_Movement_Speed_(PIPE_MOVEMENT_SPEED),
+      Pipe_Spawn_Frequency_(PIPE_SPAWN_FREQUENCY) {
   Land_Height_ = this->Data_->Assets_.GetTexture("Land").getSize().y;
-  Pipe_Spawn_Y_Offset_ = 0;
 }
 
 void Pipe::SpawnTopPipe() {
@@ -36,7 +40,9 @@ void Pipe::SpawnInvisiblePipe() {
 }
 
 void Pipe::RandomizePipeOffset() {
-  Pipe_Spawn_Y_Offset_ = rand() % (Land_Height_ / 2) + 1;
+  RandomEngine Random_Engine_;
+  Pipe_Spawn_Y_Offset_ =
+      Random_Engine_.GenerateRandomNumber() % (Land_Height_ / 2) + 1;
 }
 
 void Pipe::Draw() {
@@ -51,9 +57,8 @@ void Pipe::MovePipes(float delta_time) {
         0 - Pipe_Sprites_[i].getGlobalBounds().width) {
       Pipe_Sprites_.erase(Pipe_Sprites_.begin() + i);
     } else {
-      sf::Vector2f position = Pipe_Sprites_[i].getPosition();
-      float pipe_movement = PIPE_MOVEMENT_SPEED * delta_time;
-      Pipe_Sprites_[i].move(-pipe_movement, 0);
+      float movement_speed = Pipe_Movement_Speed_ * delta_time;
+      Pipe_Sprites_[i].move(-movement_speed, 0);
     }
   }
 
@@ -62,9 +67,8 @@ void Pipe::MovePipes(float delta_time) {
         0 - Scoring_Sprites_[i].getGlobalBounds().width) {
       Scoring_Sprites_.erase(Scoring_Sprites_.begin() + i);
     } else {
-      sf::Vector2f position = Scoring_Sprites_[i].getPosition();
-      float pipe_movement = PIPE_MOVEMENT_SPEED * delta_time;
-      Scoring_Sprites_[i].move(-pipe_movement, 0);
+      float movement_speed = Pipe_Movement_Speed_ * delta_time;
+      Scoring_Sprites_[i].move(-movement_speed, 0);
     }
   }
 }
@@ -80,5 +84,25 @@ void Pipe::SpawnScoringPipe() {
 }
 
 std::vector<sf::Sprite> &Pipe::GetScoringSprites() { return Scoring_Sprites_; }
+
+void Pipe::UpdateMovementSpeed(const float update_movement_speed) {
+  float max_freq = 250.0f;
+  printf("BEFORE PIPE MOVEMENT SPEED: %f\n", Pipe_Movement_Speed_);
+  Pipe_Movement_Speed_ < max_freq
+      ? Pipe_Movement_Speed_ += update_movement_speed
+      : Pipe_Movement_Speed_ = max_freq;
+  printf("AFTER PIPE MOVEMENT SPEED: %f\n", Pipe_Movement_Speed_);
+}
+
+void Pipe::UpdateSpawnFrequesncy(const float update_spawn_frequency) {
+  float max_freq = 1.0f;
+  printf("BEFORE PIPE FREQ SPEED: %f\n", Pipe_Spawn_Frequency_);
+  Pipe_Spawn_Frequency_ > max_freq
+      ? Pipe_Spawn_Frequency_ -= update_spawn_frequency
+      : Pipe_Spawn_Frequency_ = max_freq;
+  printf("AFTER PIPE FREQ SPEED: %f\n", Pipe_Spawn_Frequency_);
+}
+
+float Pipe::GetSpawnFrequency() { return Pipe_Spawn_Frequency_; }
 
 } // namespace Game

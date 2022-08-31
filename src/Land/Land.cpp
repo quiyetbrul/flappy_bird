@@ -1,7 +1,8 @@
 #include "Land.h"
 
 namespace Game {
-Land::Land(GameDataRef data) : Data_(data) {
+Land::Land(GameDataRef data)
+    : Data_(data), Land_Movement_Speed_(LAND_MOVEMENT_SPEED) {
   sf::Sprite Land_Sprite(this->Data_->Assets_.GetTexture("Land"));
   sf::Sprite Land_Sprite2(this->Data_->Assets_.GetTexture("Land"));
 
@@ -26,9 +27,9 @@ void Land::MoveLand(float delta_time) {
     sf::Vector2f land_position(this->Data_->Window_.getSize().x,
                                Land_Sprites_[i].getPosition().y);
 
-    float land_movement = PIPE_MOVEMENT_SPEED * delta_time;
+    float movement_speed = Land_Movement_Speed_ * delta_time;
 
-    Land_Sprites_[i].move(-land_movement, 0.0f);
+    Land_Sprites_[i].move(-movement_speed, 0.0f);
 
     if (Land_Sprites_[i].getPosition().x <
         0 - Land_Sprites_[i].getGlobalBounds().width) {
@@ -39,6 +40,15 @@ void Land::MoveLand(float delta_time) {
 
 const std::vector<sf::Sprite> &Land::GetSprites() const {
   return Land_Sprites_;
+}
+
+void Land::UpdateMovementSpeed(const float update_movement_speed) {
+  float max_freq = 250.0f;
+  printf("BEFORE LAND: %f\n", Land_Movement_Speed_);
+  Land_Movement_Speed_ < max_freq
+      ? Land_Movement_Speed_ += update_movement_speed
+      : Land_Movement_Speed_ = max_freq;
+  printf("AFTER LAND: %f\n", Land_Movement_Speed_);
 }
 
 } // namespace Game

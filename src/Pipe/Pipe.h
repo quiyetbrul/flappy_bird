@@ -26,6 +26,11 @@ public:
   void SpawnScoringPipe();
   std::vector<sf::Sprite> &GetScoringSprites();
 
+  void UpdateMovementSpeed(const float update_movement_speed);
+  void UpdateSpawnFrequesncy(const float update_movement_speed);
+
+  float GetSpawnFrequency();
+
 private:
   GameDataRef Data_;
   std::vector<sf::Sprite> Pipe_Sprites_;
@@ -33,6 +38,8 @@ private:
 
   int Land_Height_;
   int Pipe_Spawn_Y_Offset_;
+  float Pipe_Movement_Speed_;
+  float Pipe_Spawn_Frequency_;
 };
 } // namespace Game
 

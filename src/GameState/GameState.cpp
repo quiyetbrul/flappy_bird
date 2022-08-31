@@ -71,7 +71,7 @@ void GameState::Update(float delta_time) {
     Pipe_->MovePipes(delta_time);
 
     // TODO: change pipe spawn frequency after certain score
-    if (Clock_.getElapsedTime().asSeconds() > PIPE_SPAWN_FREQUENCY) {
+    if (Clock_.getElapsedTime().asSeconds() > Pipe_->GetSpawnFrequency()) {
       Pipe_->RandomizePipeOffset(); // TODO: change pipe gap
       Pipe_->SpawnInvisiblePipe();
       Pipe_->SpawnTopPipe();
@@ -101,20 +101,23 @@ void GameState::Update(float delta_time) {
       }
     }
 
-    if (GameStates::ePlaying == Game_State_) {
-      std::vector<sf::Sprite> &scoring_pipes = Pipe_->GetScoringSprites();
-      // save a for loop
-      // TODO: use the loop to check for collision as scoring pipes
-      // bird position > pipe position + pipe width -> score++
-      for (int i = 0; i < scoring_pipes.size(); i++) {
-        if (Collision_.CheckSpriteCollision(Bird_->GetSprite(),
-                                            /*bird_scale=*/0.625f,
-                                            scoring_pipes[i],
-                                            /*scoring_pipe_scale=*/1.0f)) {
-          Score_++;
-          std::cout << "Score: " << Score_ << std::endl;
-          Hud_->Update(Score_);
-          scoring_pipes.erase(scoring_pipes.begin() + i);
+    std::vector<sf::Sprite> &scoring_pipes = Pipe_->GetScoringSprites();
+    // save a for loop
+    // TODO: use the loop to check for collision as scoring pipes
+    // bird position > pipe position + pipe width -> score++
+    for (int i = 0; i < scoring_pipes.size(); i++) {
+      if (Collision_.CheckSpriteCollision(Bird_->GetSprite(),
+                                          /*bird_scale=*/0.625f,
+                                          scoring_pipes[i],
+                                          /*scoring_pipe_scale=*/1.0f)) {
+        Score_++;
+        std::cout << "Score: " << Score_ << std::endl;
+        Hud_->Update(Score_);
+        scoring_pipes.erase(scoring_pipes.begin() + i);
+        if (Score_ % 10 == 0) {
+          Pipe_->UpdateMovementSpeed(0.05f);
+          Pipe_->UpdateSpawnFrequesncy(0.02f);
+          Land_->UpdateMovementSpeed(0.05f);
         }
       }
     }
