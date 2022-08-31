@@ -8,7 +8,7 @@ namespace Game {
 class Flash {
 
 public:
-  Flash(GameDataRef data);
+  explicit Flash(GameDataRef data);
   void Show(float delta_time);
   void Draw() const;
 
