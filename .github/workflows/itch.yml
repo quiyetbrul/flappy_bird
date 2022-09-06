@@ -2,9 +2,9 @@ name: itch.io
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 env:
   quiyetbrul: quiyetbrul/flappy-bird
@@ -19,7 +19,7 @@ jobs:
         run: sudo apt-get install libsfml-dev
 
       - name: Build Game
-        run: sh makerun.sh
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Publish game to itch.io
         run: |
