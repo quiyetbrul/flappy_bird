@@ -36,28 +36,28 @@ jobs:
         env:
           BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
 
-  macos:
-    name: Publish MacOS Build
-    runs-on: macos-latest
+  # macos:
+  #   name: Publish MacOS Build
+  #   runs-on: macos-latest
 
-    steps:
-      - uses: actions/checkout@v3
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - name: Install SFML
-        run: brew install sfml
+  #     - name: Install SFML
+  #       run: brew install sfml
 
-      - name: Set up butler
-        uses: jdno/setup-butler@v1
+  #     - name: Set up butler
+  #       uses: jdno/setup-butler@v1
 
-      - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+  #     - name: Configure CMake
+  #       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
-      - name: Build
-        # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+  #     - name: Build
+  #       # Build your program with the given configuration
+  #     run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-      - name: Publish game to itch.io
-        run: |
-          butler push ${{github.workspace}} ${{ env.itch_project }}:osx-universal
-        env:
-          BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
+  #     - name: Publish game to itch.io
+  #       run: |
+  #         butler push ${{github.workspace}} ${{ env.itch_project }}:osx-universal
+  #       env:
+  #         BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
