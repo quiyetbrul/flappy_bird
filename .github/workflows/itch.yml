@@ -1,5 +1,11 @@
 name: itch.io
 
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 env:
   quiyetbrul: quiyetbrul/flappy-bird
 
