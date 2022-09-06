@@ -18,8 +18,12 @@ jobs:
       - name: Install SFML
         run: sudo apt-get install libsfml-dev
 
-      - name: Build Game
-        run: cmake -S . -B build
+      - name: Configure CMake
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+      - name: Build
+        # Build your program with the given configuration
+        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
       - name: Publish game to itch.io
         run: |
@@ -35,8 +39,12 @@ jobs:
       - name: Install SFML
         run: brew install sfml
 
-      - name: Build Game
-        run: cmake -S . -B build
+      - name: Configure CMake
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+      - name: Build
+        # Build your program with the given configuration
+        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
       - name: Publish game to itch.io
         run: |
