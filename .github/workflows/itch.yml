@@ -25,9 +25,9 @@ jobs:
         #   # Build your program with the given configuration
         #   run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-        # - name: Publish game to itch.io
-        #   run: |
-        #     butler push ${{github.workspace}}/${{ env.itch_project }}:linux-universal
+        - name: Publish game to itch.io
+          run: |
+            butler push ${{github.workspace}}/${{ env.itch_project }}:linux-universal
 
       - name: Set up butler
         uses: jdno/setup-butler@v1
