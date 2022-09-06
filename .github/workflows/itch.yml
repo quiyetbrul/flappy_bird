@@ -27,7 +27,7 @@ jobs:
 
         - name: Publish game to itch.io
           run: |
-            butler push ${{github.workspace}}/${{ env.itch_project }}:linux-universal
+            butler push ${{github.workspace}} ${{ env.itch_project }}:linux-universal
 
       - name: Set up butler
         uses: jdno/setup-butler@v1
@@ -55,6 +55,6 @@ jobs:
 
       - name: Publish game to itch.io
         run: |
-          butler push ${{github.workspace}}/${{ env.itch_project }}:osx-universal
+          butler push ${{github.workspace}} ${{ env.itch_project }}:osx-universal
         env:
           BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
