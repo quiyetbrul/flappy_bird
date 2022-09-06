@@ -12,7 +12,7 @@ const float SPLASH_STATE_SHOW_TIME = 0.0f;
 const std::string SPLASH_SCENE_BACKGROUND_FILEPATH =
     "assets/sprites/SplashBackground.png";
 
-#define MENU_BACKGROUND_FILEPATH "assets/sprites/sky.png"
+const std::string MENU_BACKGROUND_FILEPATH =  "assets/sprites/sky.png";
 const std::string GAME_BACKGROUND_FILEPATH = "assets/sprites/sky.png";
 const std::string GAMEOVER_BACKGROUND_FILEPATH = "assets/sprites/sky.png";
 
