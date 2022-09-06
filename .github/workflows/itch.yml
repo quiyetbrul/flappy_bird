@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v3
+
       - name: Install SFML
         run: sudo apt-get install libsfml-dev
 
@@ -39,6 +41,8 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - uses: actions/checkout@v3
+
       - name: Install SFML
         run: brew install sfml
 
