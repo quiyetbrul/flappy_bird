@@ -21,13 +21,13 @@ jobs:
       - name: Configure CMake
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
-      # - name: Build
-      #   # Build your program with the given configuration
-      #   run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+        # - name: Build
+        #   # Build your program with the given configuration
+        #   run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-      # - name: Publish game to itch.io
-      #   run: |
-      #     butler push ${{github.workspace}}/${{ env.itch_project }}:linux-universal
+        # - name: Publish game to itch.io
+        #   run: |
+        #     butler push ${{github.workspace}}/${{ env.itch_project }}:linux-universal
         env:
           BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
 
@@ -44,7 +44,7 @@ jobs:
 
       # - name: Build
       #   # Build your program with the given configuration
-        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+      # run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
       - name: Publish game to itch.io
         run: |
