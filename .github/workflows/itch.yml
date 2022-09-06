@@ -28,8 +28,8 @@ jobs:
           BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
 
   macos:
-    name: Publish Linux Build
-    runs-on: ubuntu-latest
+    name: Publish MacOS Build
+    runs-on: macos-latest
 
     steps:
       - name: Install SFML
