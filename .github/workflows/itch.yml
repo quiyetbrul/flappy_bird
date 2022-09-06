@@ -8,6 +8,7 @@ on:
 
 env:
   itch_project: quiyetbrul/flappy-bird
+  BUILD_TYPE: Release
 
 jobs:
   linux:
