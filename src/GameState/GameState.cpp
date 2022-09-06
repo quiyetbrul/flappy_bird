@@ -103,7 +103,7 @@ void GameState::Update(float delta_time) {
                                           /*bird_scale=*/0.625f,
                                           scoring_pipes[i],
                                           /*scoring_pipe_scale=*/1.0f)) {
-        Score_++;
+        Score_ += 2;
         std::cout << "Score: " << Score_ << std::endl;
         Hud_->Update(Score_);
         scoring_pipes.erase(scoring_pipes.begin() + i);
