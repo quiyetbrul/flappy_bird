@@ -42,7 +42,6 @@ void MenuState::HandleInput() {
     if (this->Data_->Input_.IsSpriteClicked(
             this->Play_Button_Sprite_, sf::Mouse::Left, this->Data_->Window_) ||
         sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-      // Switch To Game Mode
       this->Data_->Machine_.AddState(StateRef(new GameState(this->Data_)),
                                      true);
     }

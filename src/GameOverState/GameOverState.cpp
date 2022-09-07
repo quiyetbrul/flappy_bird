@@ -45,6 +45,11 @@ void GameOverState::Init() {
   this->Data_->Assets_.LoadTexture("Game Over Body", GAME_OVER_BODY_FILEPATH);
   this->Data_->Assets_.LoadTexture("Game Over Title", GAME_OVER_TITLE_FILEPATH);
 
+  this->Data_->Assets_.LoadTexture("Bronze Medal", BRONZE_MEDAL_FILEPATH);
+  this->Data_->Assets_.LoadTexture("Silver Medal", SILVER_MEDAL_FILEPATH);
+  this->Data_->Assets_.LoadTexture("Gold Medal", GOLD_MEDAL_FILEPATH);
+  this->Data_->Assets_.LoadTexture("Platinum Medal", PLATINUM_MEDAL_FILEPATH);
+
   GameOver_Background_Sprite_.setTexture(
       this->Data_->Assets_.GetTexture("Game Over State Background"));
   GameOver_Container_Sprite_.setTexture(
@@ -92,6 +97,15 @@ void GameOverState::Init() {
   HighScore_Text_.setPosition(
       sf::Vector2f(this->Data_->Window_.getSize().x / 10.0f * 7.25f,
                    this->Data_->Window_.getSize().y / 1.78f));
+
+  for (const auto medal_pair : Medal_Score) {
+    if (Score_ >= medal_pair.first) {
+      Medal_.setTexture(this->Data_->Assets_.GetTexture(medal_pair.second));
+      break;
+    }
+  }
+
+  Medal_.setPosition(175, 465);
 }
 
 void GameOverState::HandleInput() {
@@ -121,6 +135,7 @@ void GameOverState::Draw(float delta_time) {
   this->Data_->Window_.draw(Retry_Button_Sprite_);
   this->Data_->Window_.draw(Score_Text_);
   this->Data_->Window_.draw(HighScore_Text_);
+  this->Data_->Window_.draw(Medal_);
   this->Data_->Window_.display();
 }
 

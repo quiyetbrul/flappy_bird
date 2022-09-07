@@ -22,7 +22,7 @@ public:
   void Draw(float delta_time);
 
   void CheckCollision(const std::vector<sf::Sprite> &sprites, const Bird &bird,
-                      const float scale1, const float scale2);
+                      const float scale1, const float scale2, sf::Sound &sound);
 
 private:
   GameDataRef Data_;
@@ -41,6 +41,14 @@ private:
   int Game_State_;
 
   int Score_;
+
+  sf::SoundBuffer Hit_Sound_Buffer_;
+  sf::SoundBuffer Point_Sound_Buffer_;
+  sf::SoundBuffer Wing_Sound_Buffer_;
+
+  sf::Sound Hit_Sound_;
+  sf::Sound Point_Sound_;
+  sf::Sound Wing_Sound_;
 };
 } // namespace Game
 

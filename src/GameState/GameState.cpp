@@ -26,6 +26,13 @@ void GameState::Init() {
 
   this->Data_->Assets_.LoadFont("Flappy Font", FLAPPY_FONT_FILEPATH);
 
+  this->Data_->Assets_.LoadSound(HIT_SOUND_FILEPATH, Hit_Sound_,
+                                 Hit_Sound_Buffer_);
+  this->Data_->Assets_.LoadSound(POINT_SOUND_FILEPATH, Point_Sound_,
+                                 Point_Sound_Buffer_);
+  this->Data_->Assets_.LoadSound(WING_SOUND_FILEPATH, Wing_Sound_,
+                                 Wing_Sound_Buffer_);
+
   Bird_ = new Bird(this->Data_);
   Pipe_ = new Pipe(this->Data_);
   Land_ = new Land(this->Data_);
@@ -56,18 +63,20 @@ void GameState::HandleInput() {
         GameStates::eGameOver != Game_State_) {
       Game_State_ = GameStates::ePlaying;
       Bird_->Tap();
+      Wing_Sound_.play();
     }
   }
 }
 
 void GameState::CheckCollision(const std::vector<sf::Sprite> &sprites,
                                const Bird &bird, const float scale1,
-                               const float scale2) {
+                               const float scale2, sf::Sound &sound) {
   for (const auto &sprite : sprites) {
     if (Collision_.CheckSpriteCollision(bird.GetSprite(), scale1, sprite,
                                         scale2)) {
       Game_State_ = GameStates::eGameOver;
       Clock_.restart();
+      sound.play();
     }
   }
 }
@@ -93,9 +102,9 @@ void GameState::Update(float delta_time) {
     Bird_->Update(delta_time);
 
     CheckCollision(Land_->GetSprites(), *Bird_, /*bird_scale=*/0.625f,
-                   /*land_scale=*/1.0f);
+                   /*land_scale=*/1.0f, Hit_Sound_);
     CheckCollision(Pipe_->GetSprites(), *Bird_, /*bird_scale=*/0.625f,
-                   /*pipe_scale=*/1.0f);
+                   /*pipe_scale=*/1.0f, Hit_Sound_);
 
     std::vector<sf::Sprite> &scoring_pipes = Pipe_->GetScoringSprites();
     for (int i = 0; i < scoring_pipes.size(); i++) {
@@ -103,14 +112,15 @@ void GameState::Update(float delta_time) {
                                           /*bird_scale=*/0.625f,
                                           scoring_pipes[i],
                                           /*scoring_pipe_scale=*/1.0f)) {
-        Score_++;
+        Score_+=10;
         std::cout << "Score: " << Score_ << std::endl;
         Hud_->Update(Score_);
         scoring_pipes.erase(scoring_pipes.begin() + i);
+        Point_Sound_.play();
         if (Score_ % 10 == 0) {
-          Pipe_->UpdateMovementSpeed(0.05f);
-          Pipe_->UpdateSpawnFrequency(0.02f);
-          Land_->UpdateMovementSpeed(0.05f);
+          Pipe_->UpdateMovementSpeed(10.0f);
+          Pipe_->UpdateSpawnFrequency(1.0f);
+          Land_->UpdateMovementSpeed(10.05f);
         }
       }
     }

@@ -24,6 +24,7 @@ private:
   sf::Sprite GameOver_Title_Sprite_;
   sf::Sprite GameOver_Container_Sprite_;
   sf::Sprite Retry_Button_Sprite_;
+  sf::Sprite Medal_;
 
   sf::Text Score_Text_;
   sf::Text HighScore_Text_;
