@@ -119,7 +119,7 @@ void GameState::Update(float delta_time) {
         Point_Sound_.play();
         if (Score_ % 10 == 0) {
           Pipe_->UpdateMovementSpeed(10.0f);
-          Pipe_->UpdateSpawnFrequency(1.0f);
+          Pipe_->UpdateSpawnFrequency(0.25f);
           Land_->UpdateMovementSpeed(10.05f);
         }
       }
