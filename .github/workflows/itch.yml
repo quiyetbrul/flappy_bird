@@ -58,6 +58,6 @@ jobs:
 
       - name: Publish game to itch.io
         run: |
-          butler push ${{github.workspace}} ${{ env.itch_project }}:osx-universal
+          butler push ${{github.workspace}}/build/flappy_bird ${{ env.itch_project }}:osx-universal
         env:
           BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
