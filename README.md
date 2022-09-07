@@ -23,7 +23,7 @@ sudo apt-get install libsfml-dev
 Run memory leak detection tool
 
 ```bash
-leaks --atExit -- ./build/flappy_bird
+cd build && leaks --atExit -- ./flappy_bird
 ```
 
 ## CMake Commands
@@ -31,17 +31,23 @@ leaks --atExit -- ./build/flappy_bird
 ### Clean up build files
 
 ```bash
-sh clean.sh
+cmake --build build --target clean
+```
+
+### Configure
+
+```bash
+cmake -S . -B build/
 ```
 
 ### Build
 
 ```bash
-sh make.sh
+cd build && make
 ```
 
-### Run
+### MakeRun
 
 ```bash
-sh run.sh
+sh makerun.sh
 ```
