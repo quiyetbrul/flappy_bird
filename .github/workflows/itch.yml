@@ -52,7 +52,9 @@ jobs:
         run: brew install sfml
 
       - name: Set up butler
-        uses: jdno/setup-butler@v1
+        run: |
+          arch -x86_64 brew install butler
+        # uses: jdno/setup-butler@v1
 
       - name: Configure CMake
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
