@@ -44,9 +44,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Rosetta 2
-        run: |
-          softwareupdate --install-rosetta --agree-to-license
+      # - name: Install Rosetta 2
+      #   run: |
+      #     softwareupdate --install-rosetta --agree-to-license
 
       - name: Install SFML
         run: brew install sfml
