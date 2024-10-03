@@ -19,6 +19,8 @@ jobs:
 
       - name: install sfml
         run: brew install sfml
+      - name: Install sonar-scanner and build-wrapper
+        uses: SonarSource/sonarcloud-github-c-cpp@v3
       - name: Run build-wrapper
         run: |
           mkdir build

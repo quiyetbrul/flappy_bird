@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 # set project name and version
 project (flappy_bird)
@@ -10,8 +10,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 # Enable debug symbols by default
 if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE Debug 
-    CACHE STRING 
+  set(CMAKE_BUILD_TYPE Debug
+    CACHE STRING
       "Choose the type of build (Debug or Release)" FORCE)
 endif()
 
@@ -21,7 +21,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Find SFML shared libraries
 find_package(SFML 2.5 COMPONENTS system window graphics audio REQUIRED)
 
-add_executable(${PROJECT_NAME}      
+add_executable(${PROJECT_NAME}
                               src/Main/main.cpp
                               src/AssetManager/AssetManager.cpp
                               src/Bird/Bird.cpp
@@ -51,7 +51,7 @@ set_target_properties(${PROJECT_NAME}
         "${CMAKE_INSTALL_PREFIX}/lib"
   )
 
-target_link_libraries(${PROJECT_NAME} 
+target_link_libraries(${PROJECT_NAME}
                                     sfml-system
                                     sfml-window
                                     sfml-graphics
