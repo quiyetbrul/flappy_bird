@@ -1,6 +1,6 @@
 #include "Game.h"
 
-#include "../SplashState/SplashState.h"
+#include "SplashState/SplashState.h"
 
 namespace Game {
 Game::Game(const int screen_width, const int screen_height,

@@ -1,8 +1,8 @@
 #ifndef Bird_h
 #define Bird_h
 
-#include "../GameLoop/Game.h"
-#include "../Utils/Definitions.h"
+#include "GameLoop/Game.h"
+#include "Utils/Definitions.h"
 
 #include <vector>
 

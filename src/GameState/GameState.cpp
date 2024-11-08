@@ -1,6 +1,6 @@
 #include "GameState.h"
 
-#include "../GameOverState/GameOverState.h"
+#include "GameOverState/GameOverState.h"
 
 #include <iostream>
 #include <memory>

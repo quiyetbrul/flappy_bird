@@ -1,9 +1,9 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "../AssetManager/AssetManager.h"
-#include "../InputManager/InputManager.h"
-#include "../StateMachine/StateMachine.h"
+#include "AssetManager/AssetManager.h"
+#include "InputManager/InputManager.h"
+#include "StateMachine/StateMachine.h"
 
 #include <memory>
 #include <string>

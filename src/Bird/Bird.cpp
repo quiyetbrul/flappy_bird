@@ -1,5 +1,5 @@
 #include "Bird.h"
-#include "../Utils/Clamp.h"
+#include "Utils/Clamp.h"
 
 namespace Game {
 Bird::Bird(GameDataRef data)

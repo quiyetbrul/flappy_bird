@@ -1,9 +1,9 @@
 #ifndef PIPE_H
 #define PIPE_H
 
-#include "../GameLoop/Game.h"
-#include "../Land/Land.h"
-#include "../Utils/Definitions.h"
+#include "GameLoop/Game.h"
+#include "Land/Land.h"
+#include "Utils/Definitions.h"
 
 #include <vector>
 

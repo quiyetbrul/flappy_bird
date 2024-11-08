@@ -1,8 +1,8 @@
 #ifndef LAND_H
 #define LAND_H
 
-#include "../GameLoop/Game.h"
-#include "../Utils/Definitions.h"
+#include "GameLoop/Game.h"
+#include "Utils/Definitions.h"
 
 #include <vector>
 

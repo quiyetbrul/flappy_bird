@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
 # set project name and version
 project (flappy_bird)
@@ -18,26 +18,25 @@ endif()
 # Export compile commands for completion engines (optional)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Find SFML shared libraries
-find_package(SFML 2.5 COMPONENTS system window graphics audio REQUIRED)
+# # Include FetchContent module
+# include(FetchContent)
 
-add_executable(${PROJECT_NAME}
-                              src/Main/main.cpp
-                              src/AssetManager/AssetManager.cpp
-                              src/Bird/Bird.cpp
-                              src/Collision/Collision.cpp
-                              src/Flash/Flash.cpp
-                              src/GameLoop/Game.cpp
-                              src/GameOverState/GameOverState.cpp
-                              src/GameState/GameState.cpp
-                              src/HUD/HUD.cpp
-                              src/InputManager/InputManager.cpp
-                              src/Land/Land.cpp
-                              src/MenuState/MenuState.cpp
-                              src/Pipe/Pipe.cpp
-                              src/SplashState/SplashState.cpp
-                              src/StateMachine/StateMachine.cpp
-                              src/Utils/Utils.cpp)
+# # Define SFML
+# FetchContent_Declare(
+#   SFML
+#   GIT_REPOSITORY https://github.com/SFML/SFML.git
+#   GIT_TAG 2.5.1 # Specify the version you need
+# )
+
+# # Download SFML if not found
+# FetchContent_GetProperties(SFML)
+# if(NOT sfml_POPULATED)
+#   FetchContent_Populate(SFML)
+#   add_subdirectory(${sfml_SOURCE_DIR} ${sfml_BINARY_DIR})
+# endif()
+
+# Find SFML package
+find_package(SFML 2.5 COMPONENTS system window graphics audio REQUIRED)
 
 add_definitions(-DSPLASH_SCENE_BACKGROUND_FILEPATH=\"${CMAKE_SOURCE_DIR}/assets/sprites/SplashBackground.png\")
 add_definitions(-DMENU_BACKGROUND_FILEPATH=\"${CMAKE_SOURCE_DIR}/assets/sprites/sky.png\")
@@ -65,6 +64,26 @@ add_definitions(-DHIT_SOUND_FILEPATH=\"${CMAKE_SOURCE_DIR}/assets/audio/Hit.wav\
 add_definitions(-DPOINT_SOUND_FILEPATH=\"${CMAKE_SOURCE_DIR}/assets/audio/Point.wav\")
 add_definitions(-DWING_SOUND_FILEPATH=\"${CMAKE_SOURCE_DIR}/assets/audio/Wing.wav\")
 
+add_subdirectory(src/AssetManager)
+add_subdirectory(src/Bird)
+add_subdirectory(src/Collision)
+add_subdirectory(src/Flash)
+add_subdirectory(src/GameLoop)
+add_subdirectory(src/GameOverState)
+add_subdirectory(src/GameState)
+add_subdirectory(src/HUD)
+add_subdirectory(src/InputManager)
+add_subdirectory(src/Land)
+add_subdirectory(src/MenuState)
+add_subdirectory(src/Pipe)
+add_subdirectory(src/SplashState)
+add_subdirectory(src/StateMachine)
+add_subdirectory(src/Utils)
+
+add_executable(${PROJECT_NAME}
+                              src/main.cpp
+                              )
+
 # Using INSTALL_RPATH_USE_LINK_PATH
 set_target_properties(${PROJECT_NAME}
   PROPERTIES
@@ -77,11 +96,28 @@ set_target_properties(${PROJECT_NAME}
         "${CMAKE_INSTALL_PREFIX}/lib"
   )
 
-target_link_libraries(${PROJECT_NAME}
-                                    sfml-system
-                                    sfml-window
-                                    sfml-graphics
-                                    sfml-audio)
+target_link_libraries(${PROJECT_NAME} PUBLIC
+    sfml-system
+    sfml-window
+    sfml-graphics
+    sfml-audio
+
+    asset_manager
+    bird
+    collision
+    flash
+    game_loop
+    game_over
+    game_state
+    hud
+    input_manager
+    land
+    menu_state
+    pipe
+    splash_state
+    state_machine
+    utils
+)
 
 # Set executable install location
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)

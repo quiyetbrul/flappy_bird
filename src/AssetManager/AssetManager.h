@@ -3,6 +3,8 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+
+#include <string>
 #include <map>
 
 namespace Game {

@@ -1,7 +1,7 @@
 #ifndef STATE_MACHINE_H
 #define STATE_MACHINE_H
 
-#include "../Utils/State.h"
+#include "Utils/State.h"
 
 #include <memory>
 #include <stack>

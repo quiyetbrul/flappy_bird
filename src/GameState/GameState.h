@@ -1,15 +1,15 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#include "../Bird/Bird.h"
-#include "../Collision/Collision.h"
-#include "../Flash/Flash.h"
-#include "../HUD/HUD.h"
-#include "../Land/Land.h"
-#include "../Pipe/Pipe.h"
-#include "../StateMachine/StateMachine.h"
-#include "../Utils/Definitions.h"
-#include "../Utils/State.h"
+#include "Bird/Bird.h"
+#include "Collision/Collision.h"
+#include "Flash/Flash.h"
+#include "HUD/HUD.h"
+#include "Land/Land.h"
+#include "Pipe/Pipe.h"
+#include "StateMachine/StateMachine.h"
+#include "Utils/Definitions.h"
+#include "Utils/State.h"
 
 namespace Game {
 class GameState : public State {

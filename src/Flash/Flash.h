@@ -1,8 +1,8 @@
 #ifndef FLASH_H
 #define FLASH_H
 
-#include "../GameLoop/Game.h"
-#include "../Utils/Definitions.h"
+#include "GameLoop/Game.h"
+#include "Utils/Definitions.h"
 
 namespace Game {
 class Flash {

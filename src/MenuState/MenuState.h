@@ -1,11 +1,11 @@
 #ifndef MENUSTATE_H
 #define MENUSTATE_H
 
-#include "../GameLoop/Game.h"
-#include "../GameState/GameState.h"
-#include "../StateMachine/StateMachine.h"
-#include "../Utils/Definitions.h"
-#include "../Utils/State.h"
+#include "GameLoop/Game.h"
+#include "GameState/GameState.h"
+#include "StateMachine/StateMachine.h"
+#include "Utils/Definitions.h"
+#include "Utils/State.h"
 
 namespace Game {
 class MenuState : public State {
