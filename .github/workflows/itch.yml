@@ -34,26 +34,3 @@ jobs:
       - name: Publish game to itch.io
         run: |
           butler push ${{github.workspace}}/build ${{ env.itch_project }}:linux-universal
-
-  macos:
-    name: Publish macOS Build
-    runs-on: macos
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install SFML
-        run: brew install sfml
-
-      - name: Set up butler
-        run: jdno/setup-butler@v1
-
-      - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
-
-      - name: Build
-        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
-
-      - name: Publish game to itch.io
-        run: |
-          butler push ${{github.workspace}}/build ${{ env.itch_project }}::macos-universal
