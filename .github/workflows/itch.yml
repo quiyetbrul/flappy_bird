@@ -1,4 +1,4 @@
-name: itch.io
+name: Publish Builds
 
 on:
   push:
@@ -49,9 +49,15 @@ jobs:
         run: |
           softwareupdate --install-rosetta --agree-to-license
 
+      - name: Install Homebrew in /usr/local
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          echo 'eval "$(/usr/local/bin/brew shellenv)"' >> $HOME/.zprofile
+          eval "$(/usr/local/bin/brew shellenv)"
+
       - name: Set up butler
         run: |
-          arch -x86_64 brew install butler
+          arch -x86_64 /usr/local/bin/brew install butler
 
       - name: Configure CMake
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
@@ -62,4 +68,3 @@ jobs:
       - name: Publish game to itch.io
         run: |
           arch -x86_64 butler push ${{github.workspace}} ${{ env.itch_project }}:macos-universal
-
