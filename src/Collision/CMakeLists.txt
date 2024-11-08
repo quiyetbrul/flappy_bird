@@ -1,5 +1,5 @@
 set(COLLISION
-    collision.cpp
+    Collision.cpp
 )
 
 add_library(collision ${COLLISION})

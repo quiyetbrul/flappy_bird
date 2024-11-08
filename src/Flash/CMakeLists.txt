@@ -1,5 +1,5 @@
 set(FLASH
-    flash.cpp
+    Flash.cpp
 )
 
 add_library(flash ${FLASH})

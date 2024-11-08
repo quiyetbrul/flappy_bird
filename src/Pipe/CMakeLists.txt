@@ -1,5 +1,5 @@
 set(PIPE
-    pipe.cpp
+    Pipe.cpp
 )
 
 add_library(pipe ${PIPE})

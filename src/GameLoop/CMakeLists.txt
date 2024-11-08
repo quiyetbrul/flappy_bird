@@ -1,5 +1,5 @@
 set(GAME_LOOP
-    game.cpp
+    Game.cpp
 )
 
 add_library(game_loop ${GAME_LOOP})

@@ -1,5 +1,5 @@
 set(BIRD
-    bird.cpp
+    Bird.cpp
 )
 
 add_library(bird ${BIRD})
